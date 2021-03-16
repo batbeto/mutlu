@@ -13,7 +13,6 @@ function Home(){
                             Procure o evento <br /> mais proximo de <br /> <strong className="voce">você</strong>!!!
                         </h1>
                         <h3 className="home-subtitle">
-                        <i className="bi bi-github"></i>
                             Escolha o evento clicando no botão abaixo.
                         </h3>
                         <Button href="#" variant="primary">ENCONTRAR</Button>

@@ -4,7 +4,8 @@ import { ReactComponent as Instalogo } from '../../../Assets/instagram.svg';
 
 function Footer(){
     return (
-        <nav className="navbar fixed-bottom navbar-dark bg-dark">
+        <footer className="main-footer">
+            App desenvolvido para a disciplina PWEB
             <div className="footer-icons">
                 <a href="https://github.com/batbeto" target="_new">
                     <Gitlogo />
@@ -12,9 +13,8 @@ function Footer(){
                 <a className="instalogo" href="https://www.instagram.com/adalberto_maia/" target="_new">
                     <Instalogo />
                 </a>
-                App desenvolvido para a disciplina PWEB
             </div>
-        </nav>
+        </footer>
     )
 }
 
