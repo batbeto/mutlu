@@ -1,11 +1,11 @@
 import './styles.css';
-import { ReactComponent as Logo } from '../assets/location_brasil.svg';
+import { ReactComponent as Logo } from '../../../Assets/location_brasil.svg';
 import Navbar from 'react-bootstrap/Navbar'
 
 function Mainavbar(){
     return(
         <>
-            <Navbar bg="dark" variant="dark" className="main-navbar">
+            <Navbar bg="dark" variant="dark" fixed="top" className="main-navbar">
                 <Navbar.Brand href="#home">
                     <Logo
                         width="30"
@@ -13,6 +13,8 @@ function Mainavbar(){
                         className="d-inline-block align-top"
                     />{' '}
                     Mutlu
+
+                    <i className="bi bi-github"></i>
                 </Navbar.Brand>
             </Navbar>
         </>
