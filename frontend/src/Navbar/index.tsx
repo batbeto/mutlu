@@ -1,10 +1,10 @@
 import './styles.css';
-import { ReactComponent as Logo } from './location_brasil.svg';
+import { ReactComponent as Logo } from '../assets/location_brasil.svg';
 import Navbar from 'react-bootstrap/Navbar'
 
 function Mainavbar(){
     return(
-        <div>
+        <>
             <Navbar bg="dark" variant="dark" className="main-navbar">
                 <Navbar.Brand href="#home">
                     <Logo
@@ -15,7 +15,7 @@ function Mainavbar(){
                     Mutlu
                 </Navbar.Brand>
             </Navbar>
-        </div>
+        </>
    
     )
 }
