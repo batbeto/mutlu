@@ -1,6 +1,6 @@
 import './styles.css';
-import Button from 'react-bootstrap/Button';
 import { ReactComponent as MainImg } from '../../Assets/having_fun.svg'
+import Button from '@material-ui/core/Button';
 
 function Home(){
     return (
@@ -12,9 +12,24 @@ function Home(){
                             Procure o evento <br /> mais proximo de <br /> <strong className="voce">você</strong>!!!
                         </h1>
                         <h3 className="home-subtitle">
-                            Escolha o evento clicando no botão abaixo.
+                            Vamos começar escolhendo a opção abaixo.
                         </h3>
-                        <Button href="/orders" variant="primary">ENCONTRAR</Button>
+                        <div className="btn">
+                            <Button 
+                                className = "btn_login" 
+                                variant="contained" 
+                                color="primary" 
+                                href="/login">log in</Button>{'   '}
+
+                            <Button 
+                                className="btn_register"
+                                href="/reg" 
+                                variant="contained" 
+                                color="primary">Registrar</Button>
+                        </div>
+                        <div className="btn_register">
+                            
+                        </div>
                     </div>
                     <div className="home-image">
                         <MainImg />
