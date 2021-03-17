@@ -1,6 +1,6 @@
 import './styles.css';
-import { ReactComponent as Gitlogo } from '../../../Assets/github.svg';
-import { ReactComponent as Instalogo } from '../../../Assets/instagram.svg';
+import { ReactComponent as Gitlogo } from '../../Assets/github.svg';
+import { ReactComponent as Instalogo } from '../../Assets/instagram.svg';
 
 function Footer(){
     return (

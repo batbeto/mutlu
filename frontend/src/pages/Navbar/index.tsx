@@ -1,5 +1,5 @@
 import './styles.css';
-import { ReactComponent as Logo } from '../../../Assets/location_brasil.svg';
+import { ReactComponent as Logo } from '../../Assets/location_brasil.svg';
 import Navbar from 'react-bootstrap/Navbar'
 
 function Mainavbar(){

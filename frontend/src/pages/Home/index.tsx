@@ -1,7 +1,6 @@
 import './styles.css';
 import Button from 'react-bootstrap/Button';
 import { ReactComponent as MainImg } from '../../Assets/having_fun.svg'
-import Footer from './footer'
 
 function Home(){
     return (
@@ -22,7 +21,6 @@ function Home(){
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }
