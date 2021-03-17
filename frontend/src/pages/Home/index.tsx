@@ -1,6 +1,7 @@
 import './styles.css';
 import { ReactComponent as MainImg } from '../../Assets/having_fun.svg'
 import Button from '@material-ui/core/Button';
+import Footer from '../footer';
 
 function Home(){
     return (
@@ -34,6 +35,7 @@ function Home(){
                     <div className="home-image">
                         <MainImg />
                     </div>
+                    <Footer />
                 </div>
             </div>
         </>

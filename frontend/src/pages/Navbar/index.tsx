@@ -4,18 +4,18 @@ import Navbar from 'react-bootstrap/Navbar'
 
 function Mainavbar(){
     return(
-        <>
-            <Navbar bg="dark" variant="dark" fixed="top" className="main-navbar">
-                <Navbar.Brand href="/">
-                    <Logo
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                    />{' '}
-                    Mutlu
-                </Navbar.Brand>
-            </Navbar>
-        </>
+        
+        <Navbar bg="dark" variant="dark" className="main-navbar">
+            <Navbar.Brand href="/">
+                <Logo
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                />{' '}
+                Mutlu
+            </Navbar.Brand>
+        </Navbar>
+        
    
     )
 }

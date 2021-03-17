@@ -1,11 +1,9 @@
-import './styles.css';
-
 function Steps(){
     return (
         <header className="orders-steps-container">
             <div className="orders-steps-content">
                 <h1 className="steps-title">
-                    Sigas as <br /> etapas!
+                    Selecione um <br /> evento ou clique no <br /> <strong>mapa</strong> ao lado!
                 </h1>
 
             </div>
