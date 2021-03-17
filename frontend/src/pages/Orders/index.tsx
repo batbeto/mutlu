@@ -1,8 +1,11 @@
+import Steps from './Steps';
 import './styles.css';
 
 function Orders(){
     return (
-        <div></div>
+        <div className="orders-container">
+            <Steps />
+        </div>
     )
 
 }
