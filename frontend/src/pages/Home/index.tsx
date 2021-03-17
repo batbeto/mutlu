@@ -14,7 +14,7 @@ function Home(){
                         <h3 className="home-subtitle">
                             Escolha o evento clicando no botão abaixo.
                         </h3>
-                        <Button href="#" variant="primary">ENCONTRAR</Button>
+                        <Button href="/orders" variant="primary">ENCONTRAR</Button>
                     </div>
                     <div className="home-image">
                         <MainImg />
