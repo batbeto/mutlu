@@ -20,7 +20,7 @@ function Home(){
                                 className = "btn_login" 
                                 variant="contained" 
                                 color="primary" 
-                                href="/login">log in</Button>{'   '}
+                                href="/orders">log in</Button>{'   '}
 
                             <Button 
                                 className="btn_register"

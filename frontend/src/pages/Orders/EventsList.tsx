@@ -9,7 +9,19 @@ function EventsList(){
                     <EventsCard />
                     <EventsCard /> 
                     <EventsCard /> 
-                    <EventsCard />    
+                    <EventsCard />   
+                    <EventsCard />
+                    <EventsCard />
+                    <EventsCard /> 
+                    <EventsCard />
+                    <EventsCard />
+                    <EventsCard />
+                    <EventsCard />
+                    <EventsCard />
+                    <EventsCard />
+                    <EventsCard />
+                    <EventsCard />
+                    
                 </div>
                 
             </div>
