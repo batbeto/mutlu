@@ -29,18 +29,18 @@ public class OrderService {
 	
 	@Transactional(readOnly = true)
 	public List<OrderDTO> findAll(){
-		List<Order> list = repository.findOrdersPending();
+		List<Order> list = repository.findOrdersConclused();
 		return list.stream().map(x -> new OrderDTO(x)).collect(Collectors.toList());
 	}
 	
 	@Transactional
 	public OrderDTO insert(OrderDTO dto) {
 		Order order = new Order(
-				null, 
-				dto.getAddress(), 
-				dto.getLatitude(),
-				dto.getLongitude(),
+				null,
 				Instant.now(),
+				dto.getPrice(),
+				dto.getQtd(),
+				dto.getTotal(),
 				OrderStatus.PENDING);
 		for (EventDTO p : dto.getEvents()) {
 			Event event = eventRepository.getOne(p.getId());
@@ -51,9 +51,17 @@ public class OrderService {
 	}
 	
 	@Transactional
-	public OrderDTO setDelivered(Long id) {
+	public OrderDTO setConclused(Long id) {
 		Order order = repository.getOne(id);
-		order.setStatus(OrderStatus.DELIVERED);
+		order.setStatus(OrderStatus.CONCLUSED);
+		order = repository.save(order);
+		return new OrderDTO(order);
+	}
+	
+	@Transactional
+	public OrderDTO setPending(Long id) {
+		Order order = repository.getOne(id);
+		order.setStatus(OrderStatus.PENDING);
 		order = repository.save(order);
 		return new OrderDTO(order);
 	}

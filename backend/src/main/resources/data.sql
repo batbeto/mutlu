@@ -1,19 +1,21 @@
-INSERT INTO tb_event (name, price, image_Uri, description) VALUES ('Festa louca 00', 49.9, 'https://picsum.photos/500/300', 'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01');
-INSERT INTO tb_event (name, price, image_Uri, description) VALUES ('Festa louca 01', 59.9, 'https://picsum.photos/500/300', 'É uma festa muitxo loquinha meu 02É uma festa muitxo loquinha meu 02É uma festa muitxo loquinha meu 02');
-INSERT INTO tb_event (name, price, image_Uri, description) VALUES ('Festa louca 02', 45.0, 'https://picsum.photos/500/300', 'É uma festa muitxo loquinha meu 03É uma festa muitxo loquinha meu 03É uma festa muitxo loquinha meu 03');
-INSERT INTO tb_event (name, price, image_Uri, description) VALUES ('Festa louca 03', 52.0, 'https://picsum.photos/500/300', 'É uma festa muitxo loquinha meu 04É uma festa muitxo loquinha meu 04É uma festa muitxo loquinha meu 04');
-INSERT INTO tb_event (name, price, image_Uri, description) VALUES ('Festa louca 04', 59.95, 'https://picsum.photos/500/300', 'É uma festa muitxo loquinha meu 05É uma festa muitxo loquinha meu 05É uma festa muitxo loquinha meu 05');
-INSERT INTO tb_event (name, price, image_Uri, description) VALUES ('Festa louca 05', 35.9, 'https://picsum.photos/500/300', 'É uma festa muitxo loquinha meu 06É uma festa muitxo loquinha meu 06É uma festa muitxo loquinha meu 06');
-INSERT INTO tb_event (name, price, image_Uri, description) VALUES ('Festa louca 06', 38.0, 'https://picsum.photos/500/300', 'É uma festa muitxo loquinha meu 07É uma festa muitxo loquinha meu 07É uma festa muitxo loquinha meu 07');
-INSERT INTO tb_event (name, price, image_Uri, description) VALUES ('Festa louca 07', 37.9, 'https://picsum.photos/500/300', 'É uma festa muitxo loquinha meu 08É uma festa muitxo loquinha meu 08É uma festa muitxo loquinha meu 08');
+INSERT INTO tb_event (name, price, tickets, address, latitude, longitude, date, description, image_Uri) VALUES ('Festa louca 00', 49.9, 50,'Avenida Paulista, 1500' , -23.561680 , -43.217753, '2011-01-18 00:00:00.0' ,'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01' ,'https://picsum.photos/500/300');
+INSERT INTO tb_event (name, price, tickets, address, latitude, longitude, date, description, image_Uri) VALUES ('Festa louca 02', 59.9, 50,'Avenida Paulista, 1500' , -21.561680 , -40.217753, '2014-08-18 00:00:00.0' ,'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01' ,'https://picsum.photos/500/300');
+INSERT INTO tb_event (name, price, tickets, address, latitude, longitude, date, description, image_Uri) VALUES ('Festa louca 10', 69.9, 50,'Avenida Paulista, 1500' , -22.561680 , -43.217753, '2017-01-18 00:00:00.0' ,'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01' ,'https://picsum.photos/500/300');
+INSERT INTO tb_event (name, price, tickets, address, latitude, longitude, date, description, image_Uri) VALUES ('Festa louca 03', 79.9, 50,'Avenida Paulista, 1500' , -24.561680 , -41.217753, '2018-02-18 00:00:00.0' ,'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01' ,'https://picsum.photos/500/300');
+INSERT INTO tb_event (name, price, tickets, address, latitude, longitude, date, description, image_Uri) VALUES ('Festa louca 05', 89.9, 50,'Avenida Paulista, 1500' , -23.561680 , -43.217753, '2021-01-18 00:00:00.0' ,'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01' ,'https://picsum.photos/500/300');
+INSERT INTO tb_event (name, price, tickets, address, latitude, longitude, date, description, image_Uri) VALUES ('Festa louca 06', 99.9, 50,'Avenida Paulista, 1500' , -23.561680 , -42.217753, '2021-05-18 00:00:00.0' ,'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01' ,'https://picsum.photos/500/300');
+INSERT INTO tb_event (name, price, tickets, address, latitude, longitude, date, description, image_Uri) VALUES ('Festa louca 07', 129.9, 50,'Avenida Paulista, 1500' , -23.761680 , -43.217753, '2021-01-18 00:00:00.0' ,'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01' ,'https://picsum.photos/500/300');
+INSERT INTO tb_event (name, price, tickets, address, latitude, longitude, date, description, image_Uri) VALUES ('Festa louca 08', 9.9, 50,'Avenida Paulista, 1500' , -23.561680 , -45.217753, '2021-01-18 00:00:00.0' ,'É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01É uma festa muitxo loquinha meu 01' ,'https://picsum.photos/500/300');
 
-INSERT INTO tb_order (status, latitude, longitude, address, moment) VALUES (0, -23.561680, -46.656139, 'Avenida Paulista, 1500', TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z');
-INSERT INTO tb_order (status, latitude, longitude, address, moment) VALUES (1, -22.946779, -43.217753, 'Avenida Paulista, 1500', TIMESTAMP WITH TIME ZONE '2021-01-01T15:00:00Z');
-INSERT INTO tb_order (status, latitude, longitude, address, moment) VALUES (0, -25.439787, -49.237759, 'Avenida Paulista, 1500', TIMESTAMP WITH TIME ZONE '2021-01-01T16:00:00Z');
-INSERT INTO tb_order (status, latitude, longitude, address, moment) VALUES (0, -23.561680, -46.656139, 'Avenida Paulista, 1500', TIMESTAMP WITH TIME ZONE '2021-01-01T12:00:00Z');
-INSERT INTO tb_order (status, latitude, longitude, address, moment) VALUES (1, -23.561680, -46.656139, 'Avenida Paulista, 1500', TIMESTAMP WITH TIME ZONE '2021-01-01T08:00:00Z');
-INSERT INTO tb_order (status, latitude, longitude, address, moment) VALUES (0, -23.561680, -46.656139, 'Avenida Paulista, 1500', TIMESTAMP WITH TIME ZONE '2021-01-01T14:00:00Z');
-INSERT INTO tb_order (status, latitude, longitude, address, moment) VALUES (0, -23.561680, -46.656139, 'Avenida Paulista, 1500', TIMESTAMP WITH TIME ZONE '2021-01-01T09:00:00Z');
+
+INSERT INTO tb_order (moment, price, qtd, total, status) VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 49.9, 2, 599.8, 1);
+INSERT INTO tb_order (moment, price, qtd, total, status) VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 29.9, 42, 499.8, 1);
+INSERT INTO tb_order (moment, price, qtd, total, status) VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 39.9, 2, 399.8, 1);
+INSERT INTO tb_order (moment, price, qtd, total, status) VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 79.9, 21, 299.8, 1);
+INSERT INTO tb_order (moment, price, qtd, total, status) VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 99.9, 12, 199.8, 1);
+INSERT INTO tb_order (moment, price, qtd, total, status) VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 19.9, 42, 969.8, 1);
+INSERT INTO tb_order (moment, price, qtd, total, status) VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 29.9, 22, 929.8, 1);
+
 
 INSERT INTO tb_order_event (order_id, event_id) VALUES (1 , 1);
 INSERT INTO tb_order_event (order_id, event_id) VALUES (1 , 4);

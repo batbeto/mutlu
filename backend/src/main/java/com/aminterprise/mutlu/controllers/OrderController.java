@@ -38,9 +38,15 @@ public class OrderController {
 		return ResponseEntity.created(uri).body(dto);
 	}
 	
-	@PutMapping("/{id}/delivered")
-	public ResponseEntity<OrderDTO> setDelivered(@PathVariable Long id){
-		OrderDTO dto = service.setDelivered(id);
+	@PutMapping("/{id}/conclused")
+	public ResponseEntity<OrderDTO> setConclused(@PathVariable Long id){
+		OrderDTO dto = service.setConclused(id);
+		return ResponseEntity.ok().body(dto);
+	}
+	
+	@PutMapping("/{id}/pending")
+	public ResponseEntity<OrderDTO> setPending(@PathVariable Long id){
+		OrderDTO dto = service.setPending(id);
 		return ResponseEntity.ok().body(dto);
 	}
 }
