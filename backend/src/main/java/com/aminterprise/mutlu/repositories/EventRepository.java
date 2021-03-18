@@ -1,14 +1,14 @@
-package com.aminterprise.amdeliver.repositories;
+package com.aminterprise.mutlu.repositories;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.aminterprise.amdeliver.entities.Product;
+import com.aminterprise.mutlu.entities.Event;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface EventRepository extends JpaRepository<Event, Long> {
 	
-	List<Product> findAllByOrderByNameAsc();
+	List<Event> findAllByOrderByNameAsc();
 }
 
 

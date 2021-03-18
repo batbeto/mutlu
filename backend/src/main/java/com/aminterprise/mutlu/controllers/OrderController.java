@@ -1,4 +1,4 @@
-package com.aminterprise.amdeliver.controllers;
+package com.aminterprise.mutlu.controllers;
 
 import java.net.URI;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.aminterprise.amdeliver.dto.OrderDTO;
-import com.aminterprise.amdeliver.services.OrderService;
+import com.aminterprise.mutlu.dto.OrderDTO;
+import com.aminterprise.mutlu.services.OrderService;
 
 @RestController
 @RequestMapping(value = "/orders")

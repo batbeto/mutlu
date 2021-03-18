@@ -1,4 +1,4 @@
-package com.aminterprise.amdeliver.dto;
+package com.aminterprise.mutlu.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.aminterprise.amdeliver.entities.Order;
-import com.aminterprise.amdeliver.entities.OrderStatus;
+import com.aminterprise.mutlu.entities.Order;
+import com.aminterprise.mutlu.entities.OrderStatus;
 
 public class OrderDTO implements Serializable {
 	
@@ -21,7 +21,7 @@ public class OrderDTO implements Serializable {
 	private Instant moment;
 	private OrderStatus status ;
 	
-	private List<ProductDTO> products = new ArrayList<>();
+	private List<EventDTO> events = new ArrayList<>();
 	
 	public OrderDTO() {
 	}
@@ -45,7 +45,7 @@ public class OrderDTO implements Serializable {
 		longitude = entity.getLongitude();
 		moment = entity.getMoment();
 		status = entity.getStatus();
-		products = entity.getProducts().stream().map(x -> new ProductDTO(x)).collect(Collectors.toList());
+		events = entity.getEvents().stream().map(x -> new EventDTO(x)).collect(Collectors.toList());
 	}
 
 
@@ -109,8 +109,8 @@ public class OrderDTO implements Serializable {
 	}
 
 
-	public List<ProductDTO> getProducts() {
-		return products;
+	public List<EventDTO> getEvents() {
+		return events;
 	}
 	
 	

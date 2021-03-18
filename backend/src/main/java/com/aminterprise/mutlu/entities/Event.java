@@ -1,6 +1,8 @@
-package com.aminterprise.amdeliver.entities;
+package com.aminterprise.mutlu.entities;
+
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +12,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "tb_product")
-public class Product implements Serializable {
+@Table(name = "tb_event")
+public class Event implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -20,17 +22,28 @@ public class Product implements Serializable {
 	private Long id;
 	private String name;
 	private Double price;
+	private Long tickets;
+	private String address;
+	private Double latitude;
+	private Double longitude;
+	private Date date; 
 	private String description;
 	private String imageUri;
 	
-	public Product() {
+	public Event() {
 	}
 
-	public Product(Long id, String name, Double price, String description, String imageUri) {
+	public Event(Long id, String name, Double price, Long tickets, String address, Double latitude, Double longitude,
+			Date date, String description, String imageUri) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.tickets = tickets;
+		this.address = address;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.date = date;
 		this.description = description;
 		this.imageUri = imageUri;
 	}
@@ -57,6 +70,46 @@ public class Product implements Serializable {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Long getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(Long tickets) {
+		this.tickets = tickets;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public String getDescription() {
@@ -91,14 +144,12 @@ public class Product implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Product other = (Product) obj;
+		Event other = (Event) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-	
+	}	
 }

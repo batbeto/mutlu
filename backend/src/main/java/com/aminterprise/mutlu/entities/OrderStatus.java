@@ -1,6 +1,6 @@
-package com.aminterprise.amdeliver.entities;
+package com.aminterprise.mutlu.entities;
 
 public enum OrderStatus {
-	PENDING, DELIVERED;
+	PENDING, CONCLUSED;
 
 }

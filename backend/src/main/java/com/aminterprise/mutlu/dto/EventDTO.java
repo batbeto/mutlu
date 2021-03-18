@@ -1,10 +1,10 @@
-package com.aminterprise.amdeliver.dto;
+package com.aminterprise.mutlu.dto;
 
 import java.io.Serializable;
 
-import com.aminterprise.amdeliver.entities.Product;
+import com.aminterprise.mutlu.entities.Event;
 
-public class ProductDTO implements Serializable {
+public class EventDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -14,10 +14,10 @@ public class ProductDTO implements Serializable {
 	private String description;
 	private String imageUri;
 	
-	public ProductDTO() {
+	public EventDTO() {
 	}
 
-	public ProductDTO(Long id, String name, Double price, String description, String imageUri) {
+	public EventDTO(Long id, String name, Double price, String description, String imageUri) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -26,7 +26,7 @@ public class ProductDTO implements Serializable {
 		this.imageUri = imageUri;
 	}
 	
-	public ProductDTO(Product entity) {
+	public EventDTO(Event entity) {
 		super();
 		id = entity.getId();
 		name = entity.getName();

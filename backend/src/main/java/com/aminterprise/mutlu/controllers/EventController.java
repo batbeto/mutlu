@@ -1,4 +1,4 @@
-package com.aminterprise.amdeliver.controllers;
+package com.aminterprise.mutlu.controllers;
 
 import java.util.List;
 
@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aminterprise.amdeliver.dto.ProductDTO;
-import com.aminterprise.amdeliver.services.ProductService;
+import com.aminterprise.mutlu.dto.EventDTO;
+import com.aminterprise.mutlu.services.EventService;
 
 @RestController
-@RequestMapping(value = "/products")
-public class ProductController {
+@RequestMapping(value = "/events")
+public class EventController {
 	
 	@Autowired
-	private ProductService service;
+	private EventService service;
 	
 	@GetMapping
-	public ResponseEntity<List<ProductDTO>> findAll(){
-		List<ProductDTO> list = service.findAll();
+	public ResponseEntity<List<EventDTO>> findAll(){
+		List<EventDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 }

@@ -1,4 +1,4 @@
-package com.aminterprise.amdeliver.config;
+package com.aminterprise.mutlu.config;
 
 import java.util.Arrays;
 

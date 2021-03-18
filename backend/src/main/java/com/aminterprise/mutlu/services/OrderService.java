@@ -1,4 +1,4 @@
-package com.aminterprise.amdeliver.services;
+package com.aminterprise.mutlu.services;
 
 import java.time.Instant;
 import java.util.List;
@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aminterprise.amdeliver.dto.OrderDTO;
-import com.aminterprise.amdeliver.dto.ProductDTO;
-import com.aminterprise.amdeliver.entities.Order;
-import com.aminterprise.amdeliver.entities.OrderStatus;
-import com.aminterprise.amdeliver.entities.Product;
-import com.aminterprise.amdeliver.repositories.OrderRepository;
-import com.aminterprise.amdeliver.repositories.ProductRepository;
+import com.aminterprise.mutlu.dto.OrderDTO;
+import com.aminterprise.mutlu.dto.EventDTO;
+import com.aminterprise.mutlu.entities.Order;
+import com.aminterprise.mutlu.entities.OrderStatus;
+import com.aminterprise.mutlu.entities.Event;
+import com.aminterprise.mutlu.repositories.OrderRepository;
+import com.aminterprise.mutlu.repositories.EventRepository;
 
 
 
@@ -25,7 +25,7 @@ public class OrderService {
 	private OrderRepository repository;
 	
 	@Autowired
-	private ProductRepository productRepository;
+	private EventRepository eventRepository;
 	
 	@Transactional(readOnly = true)
 	public List<OrderDTO> findAll(){
@@ -42,9 +42,9 @@ public class OrderService {
 				dto.getLongitude(),
 				Instant.now(),
 				OrderStatus.PENDING);
-		for (ProductDTO p : dto.getProducts()) {
-			Product product = productRepository.getOne(p.getId());
-			order.getProducts().add(product);
+		for (EventDTO p : dto.getEvents()) {
+			Event event = eventRepository.getOne(p.getId());
+			order.getEvents().add(event);
 		}
 		order = repository.save(order);
 		return new OrderDTO(order);
