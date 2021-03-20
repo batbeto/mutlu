@@ -1,0 +1,11 @@
+.mvh-100 {
+    min-height: 100vh;
+  }
+  .mvh-90 {
+    min-height: 90vh;
+  }
+  
+
+  .modal {
+      display: block;
+  }
