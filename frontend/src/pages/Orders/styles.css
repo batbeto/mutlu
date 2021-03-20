@@ -52,6 +52,7 @@
   }
   
   .orders-list-container {
+    display: flex;
     justify-content: center;
   }
   
@@ -65,7 +66,7 @@
   }
   
   .order-card-container {
-    background-color: rgb(163, 255, 186);
+    background-color: #b1d4fc;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 15px;
@@ -73,14 +74,14 @@
   }
   
   .order-card-container.selected {
-    border: 4px solid #008E5B;
+    border: 4px solid #0a55aa;
     box-sizing: border-box;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
   }
   
   .order-card-container:hover {
-    transform: scale(1.01);
+    transform: scale(1.10);
   }
   
   .order-card-title {
@@ -138,20 +139,7 @@
     color: var(--secondary-color);
   }
   
-  .order-location-container {
-    display: flex;
-    justify-content: center;
-  }
   
-  .order-location-content {
-    width: 70%;
-    margin: 30px 0 120px 0;
-    padding: 20px 0;
-    height: 400px;
-    background: #FFF;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-  }
   
   .filter-container {
     display: flex;

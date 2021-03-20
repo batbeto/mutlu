@@ -1,18 +1,28 @@
 import Steps from './Steps';
 import EventsList from './EventsList';
 import './styles.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Events } from './types'
+import { fetchEvents } from '../../api';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 function Orders(){
+    const [Events, setEvents] = useState<Events[]>([]);
 
     useEffect( () => {
-        
+        fetchEvents()
+            .then(response => setEvents(response.data))
+            .catch(error =>
+                <span>
+                    <SnackbarContent message="Erro ao listar os eventos" action={'x'} />
+                </span>
+             )
     },[]);
-
+    console.log(Events);
     return (
         <div className="orders-container">
             <Steps />
-            <EventsList />              
+            <EventsList events={Events} />              
         </div>
     )
 

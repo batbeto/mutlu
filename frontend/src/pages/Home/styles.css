@@ -12,6 +12,7 @@
     display: flex;
     align-items: center;
     vertical-align: center;
+    color: #FFF;
   }
 
   
@@ -22,6 +23,17 @@
 
   .home-actions .btn_login{
     margin-right: 20px;
+    
+  }
+
+  .home-actions .btn_login:hover{
+    color: #FFF;
+    background-color: rgb(223, 12, 12)
+  }
+  
+  .home-actions .btn_register:hover{
+    color: #FFF;
+    background-color: rgb(223, 12, 12)
   }
   .home-title {
     font-weight: bold;
@@ -51,7 +63,7 @@
         width: 100% !important;
   }
   .voce {
-      color: royalblue;
+      color: #b1d4fc;
   }
   @media only screen and (max-width: 768px) {
     .home-container {

@@ -1,10 +1,10 @@
-package com.aminterprise.amdeliver;
+package com.aminterprise.mutlu;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AmdeliverApplicationTests {
+class MutluApplicationTests {
 
 	@Test
 	void contextLoads() {

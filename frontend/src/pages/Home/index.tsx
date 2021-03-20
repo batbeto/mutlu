@@ -19,17 +19,14 @@ function Home(){
                             <Button 
                                 className = "btn_login" 
                                 variant="contained" 
-                                color="primary" 
-                                href="/orders">log in</Button>{'   '}
+                                color="secondary" 
+                                href="/orders">log in</Button>
 
                             <Button 
                                 className="btn_register"
                                 href="/reg" 
                                 variant="contained" 
-                                color="primary">Registrar</Button>
-                        </div>
-                        <div className="btn_register">
-                            
+                                color="secondary">Registrar</Button>
                         </div>
                     </div>
                     <div className="home-image">

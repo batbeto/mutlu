@@ -1,9 +1,13 @@
-import Button from '@material-ui/core/Button';
+
 
 
 function Maps (){
     return (
-      <div></div>
+      <div className="map-container">
+        <div className="map-content">
+          
+        </div>
+      </div>
     );
 }
 
