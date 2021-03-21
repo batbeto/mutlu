@@ -5,7 +5,9 @@ function Steps(){
                 <h1 className="steps-title">
                     Selecione um <br /> evento ou clique no <br /> <strong>mapa</strong> ao lado!
                 </h1>
+                <div className="filter-container">
 
+                </div>
             </div>
         </header>
     )

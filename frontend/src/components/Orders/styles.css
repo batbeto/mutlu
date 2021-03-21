@@ -151,8 +151,6 @@
     align-items: center;
   }
 
-  
-  
   .filter {
     width: 80%;
   }
@@ -170,15 +168,7 @@
     z-index: 0;
   }
   
-  .order-location-title {
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 25px;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: var(--secondary-color);
-  }
-  
+   
   .order-summary-container {
     display: flex;
     justify-content: center;
@@ -268,13 +258,7 @@
       padding: 0
     }
   
-    .order-location-content {
-      width: 90%;
-    }
-  
-    .order-location-container {
-      margin-bottom: 20px;
-    }
+    
   
     .order-summary-content {
       width: 80%;

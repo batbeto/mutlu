@@ -12,8 +12,7 @@ function EventsList({events}: Props){
         <div className="orders-list-container"> 
             <div className="orders-list-items">
                 {events.map( events => (<EventsCard key={events.id} event={events} />))}               
-            </div>
-                
+            </div>    
         </div>
         
     )

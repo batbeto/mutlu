@@ -6,6 +6,7 @@ import { Events } from './types'
 import { fetchEvents } from '../../api';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 
+
 function Orders(){
     const [Events, setEvents] = useState<Events[]>([]);
 
@@ -22,7 +23,7 @@ function Orders(){
     return (
         <div className="orders-container">
             <Steps />
-            <EventsList events={Events} />              
+            <EventsList events={Events} />         
         </div>
     )
 
