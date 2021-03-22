@@ -32,7 +32,7 @@
 </ul>
 <p><em>Obs2.: Change API KEY in api.ts</em> Link: <a href="https://docs.mapbox.com/help/getting-started/access-tokens/">https://docs.mapbox.com/help/getting-started/access-tokens/</a><br>
 ~~</p>
-<p>Project done in 2021<br>
-#Spring #Jpa #Hibernate #JavaScript #TypeScript #react #react-leaflet #react-hooks<br>
+<p>Project done in 2021 with:<br>
+#Spring #Jpa #Hibernate #JavaScript #TypeScript #react #react-leaflet #react-hooks #Maven #Npm<br>
 ENJOY!!</p>
 
