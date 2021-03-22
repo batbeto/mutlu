@@ -24,7 +24,7 @@ function Map() {
   });
   
   const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
-    fetchLocalMapBox(inputValue).then(({data}) => {console.log(data)
+    fetchLocalMapBox(inputValue).then(({data}) => {
       callback(data.features.map((item: any) => ({
         label: item.place_name,
         value: item.place_name,
