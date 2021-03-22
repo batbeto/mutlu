@@ -22,19 +22,19 @@ function Map() {
   const [address, setAddress] = useState<Place>({
     position: initialPosition
   });
+  
   const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
     fetchLocalMapBox(inputValue).then(({data}) => {
-      callback(data.fatures.map((item: { place_name: any; center: any[]; }) => ({
+      callback(data.fatures.map((item: any) => ({
         label: item.place_name,
         value: item.place_name,
         posiition: {
           lat: item.center[1],
           lng: item.center[0]
-        },
-        place: item.place_name
+        }
       })))
     })
-  }
+ }
 
   const handleChangeSelect = (place: Place) => {
     setAddress(place);

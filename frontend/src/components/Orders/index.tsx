@@ -19,7 +19,6 @@ function Orders(){
                 </span>
              )
     },[]);
-    console.log(Events);
     return (
         <div className="orders-container">
             <Steps />
