@@ -6,7 +6,7 @@
 <h1 id="welcome-to-mutlu">Welcome to MutlU!</h1>
 <p>Hi! My name is Adalberto Maia, founder of the Mutlu app, Mutlu is a system thinking to manage events.</p>
 <h2 id="follow-steps">Follow Steps:</h2>
-<p><em>Obs.: You will need JDK 11</em></p>
+<p><em>Obs.: You will need JDK 11 installed</em></p>
 <blockquote>
 <p>BackEnd Spring-Boot Java</p>
 </blockquote>
@@ -22,6 +22,7 @@
 <blockquote>
 <p>FrontEnd React</p>
 </blockquote>
+<p>~~</p>
 <ul>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> Install npm and nodejs in Link: <a href="https://www.npmjs.com/get-npm">https://www.npmjs.com/get-npm</a></li>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> Go to the folder project</li>
