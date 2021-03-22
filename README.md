@@ -4,7 +4,7 @@
 ---
 
 <h1 id="welcome-to-mutlu">Welcome to MutlU!</h1>
-<p>Hi! My name is Adalberto Maia, fonder of the Mutlu app, Mutlu is a system thinking to manage events.</p>
+<p>Hi! My name is Adalberto Maia, founder of the Mutlu app, Mutlu is a system thinking to manage events.</p>
 <h2 id="follow-steps">Follow Steps:</h2>
 <p><em>Obs.: You will need JDK 11</em></p>
 <blockquote>
