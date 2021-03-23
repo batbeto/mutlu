@@ -25,16 +25,17 @@ function Map() {
   
   const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
     fetchLocalMapBox(inputValue).then(({data}) => {
+      console.log(data)
       callback(data.features.map((item: any) => ({
         label: item.place_name,
         value: item.place_name,
-        posiition: {
+        position: {
           lat: item.center[1],
           lng: item.center[0]
-        }
+       }
       })))
-    })
- }
+    }).catch(()=>console.log('void'))
+ } 
 
   const handleChangeSelect = (place: Place) => {
     setAddress(place);
