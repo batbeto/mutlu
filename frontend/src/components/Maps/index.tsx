@@ -61,7 +61,7 @@ function Map() {
         </div>
         <div className="map-container">
           <MapContainer  key={address.position.lat} style={{ width: "100%", height: "300px" }} center={address.position} zoom={15} scrollWheelZoom>
-            <TileLayer
+            <TileLayer 
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             />

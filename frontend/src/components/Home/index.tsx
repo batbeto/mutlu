@@ -3,7 +3,7 @@ import { ReactComponent as MainImg } from '../../Assets/having_fun.svg'
 import Button from '@material-ui/core/Button';
 import Footer from '../footer';
 
-function Home(){
+function Home(){   
     return (
         <>
             <div className="home-container">
