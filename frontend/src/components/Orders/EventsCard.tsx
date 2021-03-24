@@ -38,7 +38,8 @@ function formatPrice(price: number){
 }
 
 function EventsCard({ event }: Props){
-  const [open, setOpen] = React.useState(false);  
+  const [open, setOpen] = React.useState(false); 
+  
   const classes = useStyles();
     const handleClose = () => {
       setOpen(false);

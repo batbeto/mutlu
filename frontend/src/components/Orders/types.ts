@@ -10,3 +10,8 @@ export type Events = {
     description: string;
     imageUri: string;
 }
+
+
+export type Order = {
+    
+}

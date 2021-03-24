@@ -15,7 +15,7 @@ export const fetchLocalMapBox = (local: string) =>
 
 
 
-
+export const fetchOrder = () =>(axios(`${local}/orders`))
 
 
 
