@@ -4,6 +4,7 @@ import { ReactComponent as Git } from '../../assets/github.svg';
 import { Button, Grid } from '@material-ui/core';
 import firebase from "firebase/app";
 import "firebase/auth";
+import { PureComponent } from 'react';
 
 
 var firebaseConfig = {
@@ -18,40 +19,69 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-export default function Login (){
-  const providerGit = new firebase.auth.GithubAuthProvider();
-  const providerGoogle = new firebase.auth.GoogleAuthProvider();
-  return(
-    <div className="grid-container">
-      <Grid container spacing={3} direction="column" alignItems='center'>
-        <Grid item>
-          <Logo width="40px" height="40px"/> <strong>Login</strong>
-        </Grid>
-        <Grid container spacing={1} justify="center" alignItems='center'>
-          <Grid item xs={12}>
-            <Button
+class Login extends PureComponent {
+  state = {
+    isUserLoggedIn: false,
+    user: null
+  }
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged((user)=> {
+      if (user){
+          console.log('logado: ',user)
+          this.setState({
+            isUserLoggedIn: true,
+            user:user
+          })
+          
+      }else{
+          console.log('não logado', user)
+          this.setState({
+            isUserLoggedIn: false,
+            user: null
+          })
+      }}
+    )
+  }
+  
+  render() {
+    const { isUserLoggedIn, user } = this.state;
+    const providerGit = new firebase.auth.GithubAuthProvider();
+    const providerGoogle = new firebase.auth.GoogleAuthProvider();
+    return( 
+      <div className="grid-container">
+        <Grid container spacing={3} direction="column" alignItems='center'>
+          <Grid item>
+            <Logo width="40px" height="40px"/> <strong>Login</strong>
+          </Grid>
+          <Grid container spacing={1} justify="center" alignItems='center'>
+            <Grid item xs={12}>
+              <Button
+                className="btn-grid"
+                variant="contained" 
+                color="secondary"
+                fullWidth
+                onClick={()=> firebase.auth().signInWithRedirect(providerGoogle)}
+              >
+                <Google width="20px" height="20px"  /><strong>oogle</strong>
+              </Button>
+            </Grid>
+            <Grid item xs={12}> 
+              <Button
               className="btn-grid"
               variant="contained" 
               color="secondary"
               fullWidth
-              onClick={()=> firebase.auth().signInWithRedirect(providerGoogle)}
-            >
-              <Google width="20px" height="20px"  /><strong>oogle</strong>
-            </Button>
-          </Grid>
-          <Grid item xs={12}> 
-            <Button
-            className="btn-grid"
-            variant="contained" 
-            color="secondary"
-            fullWidth
-            onClick={()=> firebase.auth().signInWithRedirect(providerGit)}
-            >
-              <Git width="17px" height="17px" /><strong>Github</strong>
-            </Button>
+              onClick={()=> firebase.auth().signInWithRedirect(providerGit)}
+              >
+                <Git width="17px" height="17px" /><strong>Github</strong>
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </div>
-  )
+      </div>
+    )
 }
+}
+
+
+export default Login;

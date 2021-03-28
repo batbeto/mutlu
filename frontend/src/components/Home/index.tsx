@@ -21,9 +21,6 @@ function Home(){
                         <h1 className="home-title"> 
                             Procure o evento <br /> mais proximo de <br /> <strong className="voce">você</strong>!!!
                         </h1>
-                        <h3 className="home-subtitle">
-                            Vamos começar escolhendo a opção abaixo.
-                        </h3>
                         <div className="btn">
                             <Button 
                                 className = "btn_eventos" 
@@ -32,6 +29,10 @@ function Home(){
                                 onClick={() => setOpen(true)} 
                                 >ENTRAR COMO</Button>
                         </div>
+                        <h3 className="home-subtitle">
+                            Você precisa de uma conta Google ou Github.
+                        </h3>
+                        
                         <Modal
                             className="modalLogin"
                             open={open}
