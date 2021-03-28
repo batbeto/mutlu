@@ -4,7 +4,11 @@ import { ReactComponent as Git } from '../../assets/github.svg';
 import { Button, Grid } from '@material-ui/core';
 import firebase from "firebase/app";
 import "firebase/auth";
+import Modal from '@material-ui/core/Modal';
 import { PureComponent } from 'react';
+
+
+
 
 
 var firebaseConfig = {
@@ -19,69 +23,111 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-class Login extends PureComponent {
+class Login extends PureComponent{
+  
   state = {
     isUserLoggedIn: false,
-    user: null
+    user: null,
+    isOpen: false
   }
+  openModal = () => this.setState({ isOpen: true });
+  closeModal = () => this.setState({ isOpen: false });
+
   componentDidMount(){
-    firebase.auth().onAuthStateChanged((user)=> {
-      if (user){
-          console.log('logado: ',user)
-          this.setState({
-            isUserLoggedIn: true,
-            user:user
-          })
-          
-      }else{
-          console.log('não logado', user)
-          this.setState({
-            isUserLoggedIn: false,
-            user: null
-          })
-      }}
-    )
+    firebase.auth().onAuthStateChanged((user)=> { 
+      console.log('user: ',user)           
+      this.setState({
+        isUserLoggedIn: !!user,
+        user
+      })
+    })
+  }
+  logon_git() {
+    const providerGit = new firebase.auth.GithubAuthProvider();
+    firebase.auth().signInWithRedirect(providerGit)
+    
+  }
+  logon_google() {
+    const providerGoogle = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(providerGoogle)
+  }
+  logout = () => {
+    firebase.auth().signOut().then(()=>{
+       console.log('deslogou')
+      this.setState({isUserLoggedIn: false, user: null})
+    })
   }
   
-  render() {
-    const { isUserLoggedIn, user } = this.state;
-    const providerGit = new firebase.auth.GithubAuthProvider();
-    const providerGoogle = new firebase.auth.GoogleAuthProvider();
+  render(){
+    const {isUserLoggedIn, user, isOpen} = this.state;
     return( 
-      <div className="grid-container">
-        <Grid container spacing={3} direction="column" alignItems='center'>
-          <Grid item>
-            <Logo width="40px" height="40px"/> <strong>Login</strong>
-          </Grid>
-          <Grid container spacing={1} justify="center" alignItems='center'>
-            <Grid item xs={12}>
-              <Button
-                className="btn-grid"
-                variant="contained" 
-                color="secondary"
-                fullWidth
-                onClick={()=> firebase.auth().signInWithRedirect(providerGoogle)}
-              >
-                <Google width="20px" height="20px"  /><strong>oogle</strong>
-              </Button>
-            </Grid>
-            <Grid item xs={12}> 
-              <Button
-              className="btn-grid"
-              variant="contained" 
-              color="secondary"
-              fullWidth
-              onClick={()=> firebase.auth().signInWithRedirect(providerGit)}
-              >
-                <Git width="17px" height="17px" /><strong>Github</strong>
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
+      <div className="container">
+        {isUserLoggedIn && (
+          <>
+          <Button 
+                  className = "btn_eventos" 
+                  variant="contained" 
+                  color="secondary"
+                  onClick={this.logout}
+                  >SAIR</Button>
+          </>
+        )}
+        {!isUserLoggedIn && (
+          <>
+          <Button 
+                  className = "btn_eventos" 
+                  variant="contained" 
+                  color="secondary"
+                  onClick={this.openModal} 
+                  >ENTRAR</Button>
+
+          </>
+        )}
+        <Modal
+              className="modalLogin"
+              open={isOpen}
+              onClose={this.closeModal}
+              closeAfterTransition >
+                  <div className="modal-body">
+                      <div className="modal-content">
+                      <Grid container spacing={3} direction="column" alignItems='center'>
+                        <Grid item>
+                          <Logo width="40px" height="40px"/> <strong>Login</strong>
+                        </Grid>
+                        <Grid container spacing={1} justify="center" alignItems='center'>
+                          <Grid item xs={12}>
+                            <Button
+                              className="btn-grid"
+                              variant="contained" 
+                              color="secondary"
+                              fullWidth
+                              onClick={this.logon_google}
+                            >
+                              <Google width="20px" height="20px"  /><strong>oogle</strong>
+                            </Button>
+                          </Grid>
+                          <Grid item xs={12}> 
+                            <Button
+                            className="btn-grid"
+                            variant="contained" 
+                            color="secondary"
+                            fullWidth
+                            onClick={this.logon_git}
+                            >
+                              <Git width="17px" height="17px" /><strong>Github</strong>
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      </div>
+                  </div>
+          </Modal>
+        
       </div>
     )
 }
 }
+
 
 
 export default Login;
