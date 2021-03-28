@@ -1,9 +1,18 @@
 import './styles.css';
-import { ReactComponent as MainImg } from '../../Assets/having_fun.svg'
+import { ReactComponent as MainImg } from '../../assets/having_fun.svg'
 import Button from '@material-ui/core/Button';
 import Footer from '../footer';
+import { useState } from 'react';
+import Modal from '@material-ui/core/Modal';
+import Login from '../login'
 
 function Home(){   
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () =>{
+        setOpen(false);
+    }
+
     return (
         <>
             <div className="home-container">
@@ -17,17 +26,23 @@ function Home(){
                         </h3>
                         <div className="btn">
                             <Button 
-                                className = "btn_login" 
+                                className = "btn_eventos" 
                                 variant="contained" 
-                                color="secondary" 
-                                href="/orders">log in</Button>
-
-                            <Button 
-                                className="btn_register"
-                                href="/reg" 
-                                variant="contained" 
-                                color="secondary">Registrar</Button>
+                                color="secondary"
+                                onClick={() => setOpen(true)} 
+                                >ENTRAR COMO</Button>
                         </div>
+                        <Modal
+                            className="modalLogin"
+                            open={open}
+                            onClose={handleClose}
+                            closeAfterTransition >
+                                <div className="modal-body">
+                                    <div className="modal-content">
+                                        <Login />
+                                    </div>
+                                </div>
+                        </Modal>
                     </div>
                     <div className="home-image">
                         <MainImg />

@@ -1,5 +1,5 @@
 export type Events = {
-    id: number;
+    id?: number;
     name: string;
     price: number;
     tickets: number;
@@ -13,5 +13,4 @@ export type Events = {
 
 
 export type Order = {
-    
 }
