@@ -6,7 +6,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import Modal from '@material-ui/core/Modal';
 import { PureComponent } from 'react';
-
+import './styles.css';
 
 
 
@@ -59,7 +59,7 @@ class Login extends PureComponent{
   }
   
   render(){
-    const {isUserLoggedIn, user, isOpen} = this.state;
+    const {isUserLoggedIn, isOpen} = this.state;
     return( 
       <div className="container">
         {isUserLoggedIn && (
@@ -67,7 +67,7 @@ class Login extends PureComponent{
           <Button 
                   className = "btn_eventos" 
                   variant="contained" 
-                  color="secondary"
+                  color="primary"
                   onClick={this.logout}
                   >SAIR</Button>
           </>
@@ -77,7 +77,7 @@ class Login extends PureComponent{
           <Button 
                   className = "btn_eventos" 
                   variant="contained" 
-                  color="secondary"
+                  color="primary"
                   onClick={this.openModal} 
                   >ENTRAR</Button>
 
@@ -92,14 +92,23 @@ class Login extends PureComponent{
                       <div className="modal-content">
                       <Grid container spacing={3} direction="column" alignItems='center'>
                         <Grid item>
-                          <Logo width="40px" height="40px"/> <strong>Login</strong>
+                          <form className="box-login">
+                              <Logo width="30px" height="30px"/> <h1>LOGIN</h1>
+                              <input type="text" placeholder="Email "/>
+                              <input type="password" placeholder="Senha "/>
+                              <div className="box-btn-login">
+                                <input type="submit" value="ENTRAR"/>
+                                <input type="submit" value="REGISTRO"/>
+                              </div>
+                              
+                          </form>
                         </Grid>
                         <Grid container spacing={1} justify="center" alignItems='center'>
                           <Grid item xs={12}>
                             <Button
                               className="btn-grid"
                               variant="contained" 
-                              color="secondary"
+                              color="primary"
                               fullWidth
                               onClick={this.logon_google}
                             >
@@ -110,7 +119,7 @@ class Login extends PureComponent{
                             <Button
                             className="btn-grid"
                             variant="contained" 
-                            color="secondary"
+                            color="primary"
                             fullWidth
                             onClick={this.logon_git}
                             >
