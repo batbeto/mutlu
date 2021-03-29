@@ -100,7 +100,7 @@ class Login extends PureComponent{
                                 <input type="submit" value="ENTRAR"/>
                                 <input type="submit" value="REGISTRO"/>
                               </div>
-                              Esqueci meu <a href="">email</a> ou a <a href="">senha</a>? 
+                              Esqueceu <a href="">email</a> ou a <a href="">senha</a>? 
                           </form>
                         </Grid>
                         <Grid container spacing={1} justify="center" alignItems='center'>
