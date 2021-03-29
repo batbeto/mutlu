@@ -1,6 +1,6 @@
 .btn_grid:hover{
     color: #FFF;
-    background-color: #2ecc71;
+    background-color: #3556e6;
 }
 
 
@@ -16,7 +16,7 @@
 
   .btn_eventos:hover{
     color: #FFF;
-    background-color: #2ecc71;
+    background-color: #3556e6;
   }
 
 
@@ -44,7 +44,7 @@
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #7c0335;
+    border: 2px solid #2ecc71;
     padding: 14px 10px;
     width: 200px;
     outline: none;
@@ -56,7 +56,7 @@
 
   .box-login input[type = "text"]:focus,.box-login input[type = "password"]:focus{
     width: 350px;
-    border-color: #2ecc71;
+    border-color: #3556e6;
   }
 
 
@@ -76,7 +76,7 @@
     display: block;
     margin: 20px;
     text-align: center;
-    border: 2px solid #2ecc71;
+    border: 2px solid #3556e6;
     padding: 14px 40px;
     outline: none;
     color: white;
@@ -85,5 +85,5 @@
     cursor: pointer;
   }
   .box-btn-login input[type = "submit"]:hover{
-    background: #2ecc71;
+    background: #3556e6;
   }
