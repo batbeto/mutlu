@@ -26,6 +26,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    border: 1px solid #b2d1f5;
     transform: translate(-50%,-50%);
     background-color: #191919;
     text-align: center;
