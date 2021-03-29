@@ -100,7 +100,7 @@ class Login extends PureComponent{
                                 <input type="submit" value="ENTRAR"/>
                                 <input type="submit" value="REGISTRO"/>
                               </div>
-                              
+                              Esqueceu a senha? <a href="/recuperarsenha">Clique aqui</a>
                           </form>
                         </Grid>
                         <Grid container spacing={1} justify="center" alignItems='center'>

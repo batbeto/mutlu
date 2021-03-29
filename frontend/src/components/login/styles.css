@@ -36,7 +36,6 @@
   .modal-content { 
     background-color: #191919;
     color: white;
-    text-transform: uppercase;
     font-weight: 500;
   }
 .box-login input[type = "text"], .box-login input[type = "password"]{
