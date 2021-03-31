@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Login from '../login'
 
 
-function Mainavbar(){
+export default function Mainavbar(){
     
     return(
         
@@ -27,4 +27,3 @@ function Mainavbar(){
 }
 
 
-export default Mainavbar;

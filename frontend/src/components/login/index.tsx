@@ -5,13 +5,13 @@ import { Button, Grid } from '@material-ui/core';
 import firebase from "firebase/app";
 import "firebase/auth";
 import Modal from '@material-ui/core/Modal';
-import { PureComponent } from 'react';
 import './styles.css';
+import { useEffect, useState, useCallback } from 'react';
 
 
 
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCXmNEAwJ7_aX9Df8BQCO282H74giY6how",
   authDomain: "mutlu-am.firebaseapp.com",
   projectId: "mutlu-am",
@@ -23,43 +23,49 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-class Login extends PureComponent{
-  
-  state = {
-    isUserLoggedIn: false,
-    user: null,
-    isOpen: false
-  }
-  openModal = () => this.setState({ isOpen: true });
-  closeModal = () => this.setState({ isOpen: false });
 
-  componentDidMount(){
-    firebase.auth().onAuthStateChanged((user)=> { 
-      console.log('user: ',user)           
-      this.setState({
+interface userFire   {
+  isUserLoggedIn: boolean;
+  user: any;
+}
+
+
+function Login() {
+  const [userInfo, setUserInfo] = useState<userFire>({
+    isUserLoggedIn: false,
+    user: null
+  })
+  const [isOpen, setIsOpen] = useState(false)
+  const {isUserLoggedIn, user} = userInfo;
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user)=> {         
+      setUserInfo({
         isUserLoggedIn: !!user,
-        user
+        user 
       })
     })
-  }
-  logon_git() {
+  }, [])
+
+  const logon_git = useCallback(() => {
     const providerGit = new firebase.auth.GithubAuthProvider();
     firebase.auth().signInWithRedirect(providerGit)
-    
-  }
-  logon_google() {
+  }, [])
+
+  const logon_google = useCallback(() =>{
     const providerGoogle = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(providerGoogle)
-  }
-  logout = () => {
-    firebase.auth().signOut().then(()=>{
-       console.log('deslogou')
-      this.setState({isUserLoggedIn: false, user: null})
-    })
-  }
+  }, [])
   
-  render(){
-    const {isUserLoggedIn, isOpen} = this.state;
+  const logout = useCallback(() => {
+    firebase.auth().signOut().then(()=>{
+       setUserInfo({isUserLoggedIn: false, user: null
+      })
+    })
+  }, [])
+  
+  
+    
     return( 
       <div className="container">
         {isUserLoggedIn && (
@@ -68,7 +74,7 @@ class Login extends PureComponent{
                   className = "btn_eventos" 
                   variant="contained" 
                   color="primary"
-                  onClick={this.logout}
+                  onClick={logout}
                   >SAIR</Button>
           </>
         )}
@@ -78,7 +84,7 @@ class Login extends PureComponent{
                   className = "btn_eventos" 
                   variant="contained" 
                   color="primary"
-                  onClick={this.openModal} 
+                  onClick={()=>setIsOpen(true)} 
                   >ENTRAR</Button>
 
           </>
@@ -86,7 +92,7 @@ class Login extends PureComponent{
         <Modal
               className="modalLogin"
               open={isOpen}
-              onClose={this.closeModal}
+              onClose={()=>setIsOpen(false)}
               closeAfterTransition >
                   <div className="modal-body">
                       <div className="modal-content">
@@ -100,7 +106,7 @@ class Login extends PureComponent{
                                 <input type="submit" value="ENTRAR"/>
                                 <input type="submit" value="REGISTRO"/>
                               </div>
-                              Esqueceu <a href="">email</a> ou a <a href="">senha</a>? 
+                              Esqueceu <a href="/">email</a> ou a <a href="/">senha</a>? 
                           </form>
                         </Grid>
                         <Grid container spacing={1} justify="center" alignItems='center'>
@@ -110,7 +116,7 @@ class Login extends PureComponent{
                               variant="contained" 
                               color="primary"
                               fullWidth
-                              onClick={this.logon_google}
+                              onClick={logon_google}
                             >
                               <Google width="20px" height="20px"  /><strong>oogle</strong>
                             </Button>
@@ -121,7 +127,7 @@ class Login extends PureComponent{
                             variant="contained" 
                             color="primary"
                             fullWidth
-                            onClick={this.logon_git}
+                            onClick={logon_git}
                             >
                               <Git width="17px" height="17px" /><strong>Github</strong>
                             </Button>
@@ -135,7 +141,7 @@ class Login extends PureComponent{
       </div>
     )
 }
-}
+
 
 
 

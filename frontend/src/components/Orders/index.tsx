@@ -7,7 +7,7 @@ import { fetchEvents } from '../../api';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 
-function Orders(){
+export default function Orders(){
     const [Events, setEvents] = useState<Events[]>([]);
 
     useEffect( () => {
@@ -29,4 +29,3 @@ function Orders(){
 }
 
 
-export default Orders;

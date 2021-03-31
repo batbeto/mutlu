@@ -3,7 +3,7 @@ import { ReactComponent as MainImg } from '../../assets/having_fun.svg'
 import Footer from '../footer';
 
 
-function Home(){   
+export default function Home(){   
     
 
     return (
@@ -29,4 +29,3 @@ function Home(){
 }
 
 
-export default Home;
