@@ -2,26 +2,10 @@ import { ReactComponent as Logo } from '../../assets/location_brasil.svg';
 import { ReactComponent as Google } from '../../assets/google.svg';
 import { ReactComponent as Git } from '../../assets/github.svg';
 import { Button, Grid } from '@material-ui/core';
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from '../../services/firebase';
 import Modal from '@material-ui/core/Modal';
 import './styles.css';
 import { useEffect, useState, useCallback } from 'react';
-
-
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCXmNEAwJ7_aX9Df8BQCO282H74giY6how",
-  authDomain: "mutlu-am.firebaseapp.com",
-  projectId: "mutlu-am",
-  storageBucket: "mutlu-am.appspot.com",
-  messagingSenderId: "953049174208",
-  appId: "1:953049174208:web:eb76437690d1e7e5911d25",
-  measurementId: "G-HMN1PQMHL4"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
 
 interface userFire   {
