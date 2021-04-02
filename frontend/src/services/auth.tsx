@@ -15,10 +15,7 @@ function Auth({ children }:any){
         isUserLoggedIn: false,
         user: null
       })
-    
-    
-
-      
+          
     const logon_git = useCallback(() => {
         const providerGit = new firebase.auth.GithubAuthProvider();
         firebase.auth().signInWithRedirect(providerGit)
@@ -35,6 +32,7 @@ function Auth({ children }:any){
           })
         })
       }, [])
+      
     return (
         <AuthContext.Provider value={{
             logon_git, 
