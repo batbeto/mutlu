@@ -1,9 +1,9 @@
 import './styles.css';
 import EventsCard from './EventsCard';
-import { Events } from './types';
+import { Event } from './types';
 
 type Props = {
-    events: Events[]
+    events: Event[]
 }
 
 

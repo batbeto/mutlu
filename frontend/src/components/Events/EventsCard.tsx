@@ -1,4 +1,4 @@
-import { Events } from "./types";
+import { Event } from "./types";
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 type Props = {
-  event: Events;
+  event: Event;
 }
 
 function formatPrice(price: number){

@@ -7,7 +7,7 @@ import firebase from './services/firebase';
 import { AuthContext } from './services/auth'
 const Navbar = lazy(() => import('./components/Navbar'));
 const Home = lazy(() => import('./components/Home'));
-const Orders = lazy(() => import('./components/Orders'));
+const Events = lazy(() => import('./components/Events'));
 
 
 function App({ location }:any) {
@@ -27,7 +27,7 @@ function App({ location }:any) {
   
   if (!checkUserIn) return <LinearProgress />
 
-  if (isUserLoggedIn && location.pathname !== '/orders') return <Redirect to='/orders'/>
+  if (isUserLoggedIn && location.pathname !== '/orders') return <Redirect to='/events'/>
 
   if (!isUserLoggedIn && location.pathname !== '/') return <Redirect to='/'/>
 
@@ -35,7 +35,7 @@ function App({ location }:any) {
     <Suspense fallback={<LinearProgress />}>
       <Navbar />  
       <Switch>
-        <Route path='/orders' component={Orders}/>
+        <Route path='/events' component={Events}/>
         <Route path='/' component={Home} exact />
       </Switch>
     </Suspense>

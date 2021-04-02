@@ -2,13 +2,13 @@ import Steps from './Steps';
 import EventsList from './EventsList';
 import './styles.css';
 import { useEffect, useState } from 'react';
-import { Events } from './types'
+import { Event } from './types'
 import { fetchEvents } from '../../api';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 
-export default function Orders(){
-    const [Events, setEvents] = useState<Events[]>([]);
+export default function Events(){
+    const [events, setEvents] = useState<Event[]>([]);
 
     useEffect( () => {
         fetchEvents()
@@ -22,7 +22,7 @@ export default function Orders(){
     return (
         <div className="orders-container">
             <Steps />
-            <EventsList events={Events} />         
+            <EventsList events={events} />         
         </div>
     )
 

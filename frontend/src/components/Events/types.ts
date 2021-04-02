@@ -1,4 +1,4 @@
-export type Events = {
+export type Event = {
     id?: number;
     name: string;
     price: number;
