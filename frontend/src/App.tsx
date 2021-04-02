@@ -27,7 +27,7 @@ function App({ location }:any) {
   
   if (!checkUserIn) return <LinearProgress />
 
-  if (isUserLoggedIn && location.pathname === '/') return <Redirect to='/orders'/>
+  if (isUserLoggedIn && location.pathname !== '/orders') return <Redirect to='/orders'/>
 
   if (!isUserLoggedIn && location.pathname !== '/') return <Redirect to='/'/>
 
