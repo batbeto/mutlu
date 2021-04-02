@@ -1,5 +1,6 @@
 import './App.css';
-import { Route, Switch } from "react-router-dom";
+import t, { InferProps } from 'prop-types';
+import { Redirect ,Route, Switch } from "react-router-dom";
 import { useContext, useEffect ,lazy, Suspense} from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import firebase from './services/firebase';
@@ -9,8 +10,11 @@ const Home = lazy(() => import('./components/Home'));
 const Orders = lazy(() => import('./components/Orders'));
 
 
-function App() {
-  const { setUserInfo} = useContext(AuthContext)
+function App({ location }: InferProps<typeof App.propTypes>) {
+  const { userInfo, setUserInfo} = useContext(AuthContext)
+
+  const { isUserLoggedIn } = userInfo
+
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user)=> {  
@@ -22,16 +26,22 @@ function App() {
     })
   }, [setUserInfo]);
 
+  
+
   return (
     <Suspense fallback={<LinearProgress />}>
       <Navbar />  
       <Switch>
         <Route path='/orders' component={Orders}/>
-        <Route path='/' component={Home} />
+        <Route path='/' component={Home} exact />
       </Switch>
     </Suspense>
     
   )
+}
+
+App.propTypes = {
+  location: t.object.isRequired
 }
 
 export default App;
