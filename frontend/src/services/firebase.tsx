@@ -1,6 +1,5 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { useCallback } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCXmNEAwJ7_aX9Df8BQCO282H74giY6how",

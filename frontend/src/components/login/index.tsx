@@ -2,77 +2,29 @@ import { ReactComponent as Logo } from '../../assets/location_brasil.svg';
 import { ReactComponent as Google } from '../../assets/google.svg';
 import { ReactComponent as Git } from '../../assets/github.svg';
 import { Button, Grid } from '@material-ui/core';
-import firebase from '../../services/firebase';
 import Modal from '@material-ui/core/Modal';
 import './styles.css';
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../services/auth';
 
 
-interface userFire   {
-  isUserLoggedIn: boolean;
-  user: any;
-}
+
 
 
 function Login() {
-  const [userInfo, setUserInfo] = useState<userFire>({
-    isUserLoggedIn: false,
-    user: null
-  })
+  const { logon_git, logon_google } = useContext(AuthContext);
+  
   const [isOpen, setIsOpen] = useState(false)
-  const {isUserLoggedIn, user} = userInfo;
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user)=> {         
-      setUserInfo({
-        isUserLoggedIn: !!user,
-        user 
-      })
-    })
-  }, [])
-
-  const logon_git = useCallback(() => {
-    const providerGit = new firebase.auth.GithubAuthProvider();
-    firebase.auth().signInWithRedirect(providerGit)
-  }, [])
-
-  const logon_google = useCallback(() =>{
-    const providerGoogle = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithRedirect(providerGoogle)
-  }, [])
-  
-  const logout = useCallback(() => {
-    firebase.auth().signOut().then(()=>{
-       setUserInfo({isUserLoggedIn: false, user: null
-      })
-    })
-  }, [])
-  
-  
-    
+   
     return( 
       <div className="container">
-        {isUserLoggedIn && (
-          <>
-          <Button 
-                  className = "btn_eventos" 
-                  variant="contained" 
-                  color="primary"
-                  onClick={logout}
-                  >SAIR</Button>
-          </>
-        )}
-        {!isUserLoggedIn && (
-          <>
           <Button 
                   className = "btn_eventos" 
                   variant="contained" 
                   color="primary"
                   onClick={()=>setIsOpen(true)} 
                   >ENTRAR</Button>
-
-          </>
-        )}
+        
         <Modal
               className="modalLogin"
               open={isOpen}
