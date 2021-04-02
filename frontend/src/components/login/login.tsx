@@ -1,7 +1,14 @@
 import { ReactComponent as Logo } from '../../assets/location_brasil.svg';
 import { ReactComponent as Google } from '../../assets/google.svg';
 import { ReactComponent as Git } from '../../assets/github.svg';
-import { Button, Grid } from '@material-ui/core';
+import { 
+  Button, 
+  Grid,
+  IconButton,
+  Menu,
+  MenuItem
+ } from '@material-ui/core';
+import { Menu as MenuIcon} from '@material-ui/icons'
 import Modal from '@material-ui/core/Modal';
 import './styles.css';
 import { useState, useContext } from 'react';
@@ -11,24 +18,55 @@ import { AuthContext } from '../../services/auth';
 
 
 
+
 function Login() {
-  const { logon_git, logon_google } = useContext(AuthContext);
+  const { logon_git, logon_google, logout, userInfo } = useContext(AuthContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const [anchor, setAnchor] = useState(null);
   
-  const [isOpen, setIsOpen] = useState(false)
-   
-    return( 
+  const handleModalOpen = () =>{
+    setIsOpen(true)
+  }
+  const handleModalClose = () =>{
+    setIsOpen(false)
+  }
+  
+  const handleMenuOpen = (e: any) =>{
+    setAnchor(e.target)
+  }
+
+  const handleMenuClose = () =>{
+    setAnchor(null)
+  }
+
+  return( 
       <div className="container">
-          <Button 
-                  className = "btn_eventos" 
-                  variant="contained" 
-                  color="primary"
-                  onClick={()=>setIsOpen(true)} 
-                  >ENTRAR</Button>
-        
+          {!userInfo.isUserLoggedIn ?
+            <Button 
+              className = "btn_eventos" 
+              variant="contained" 
+              color="secondary"
+              onClick={handleModalOpen} 
+              >ENTRAR
+            </Button>
+            : 
+              <IconButton 
+                color='inherit' 
+                onClick={handleMenuOpen}
+                >
+                <MenuIcon />
+              </IconButton>
+            } 
+        <Menu
+          open={Boolean(anchor)}
+          onClose={handleMenuClose}
+          anchorEl={anchor}>
+            <MenuItem onClick={logout}>SAIR</MenuItem>
+        </Menu>       
         <Modal
               className="modalLogin"
               open={isOpen}
-              onClose={()=>setIsOpen(false)}
+              onClose={handleModalClose}
               closeAfterTransition >
                   <div className="modal-body">
                       <div className="modal-content">
