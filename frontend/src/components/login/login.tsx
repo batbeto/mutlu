@@ -69,8 +69,8 @@ function Login() {
               onClose={handleModalClose}
               closeAfterTransition
                >
-                  <div className="modal-body-login">
-                      <div className="modal-content-login">
+                  <div className="modal-content-login">
+                      <div className="modal-body-login">
                       <Grid container spacing={3} direction="column" alignItems='center'>
                         <Grid item>
                           <form className="box-login">
@@ -84,7 +84,7 @@ function Login() {
                               Esqueceu <a href="/">email</a> ou a <a href="/">senha</a>? 
                           </form>
                         </Grid>
-                        <Grid container spacing={1} justify="center" alignItems='center'>
+                        <Grid container spacing={1} justify="center" alignItems='center' className='btn_auth'>
                           <Grid item xs={12}>
                             <Button
                               className="btn-grid"

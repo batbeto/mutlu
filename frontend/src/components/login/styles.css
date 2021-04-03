@@ -21,7 +21,6 @@
   
 
   .modal-body-login {
-    width: 100%;
     padding: 0px;
     position: absolute;
     top: 50%;
@@ -52,6 +51,10 @@
     transition: 0.25s;
   }
 
+  .btn_auth{
+    width: 80%;
+    padding-bottom: 20px;
+  }
 
   .box-login input[type = "text"]:focus,.box-login input[type = "password"]:focus{
     width: 350px;
@@ -59,7 +62,7 @@
   }
 
 
-  .modal-body-login .modal-content{
+  .modal-body-login .modal-content-login{
     border: 0; 
   }
 
@@ -86,3 +89,5 @@
   .box-btn-login input[type = "submit"]:hover{
     background: #3556e6;
   }
+
+  
