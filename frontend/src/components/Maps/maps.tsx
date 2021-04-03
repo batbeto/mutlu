@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import { fetchLocalMapBox } from '../../api';
-
+import './styles.css';
 
 
 const initialPosition = {
@@ -47,7 +47,7 @@ function Map() {
   };
   return (
     <div className="order-location-container">
-      <div className="order-location-content">
+      <div className="location-content">
         <h3 className="order-location-title">
           Selecione a localidade:
         </h3>

@@ -18,22 +18,21 @@
     color: #FFF;
     background-color: #26bd26;
   }
+  
 
-
-  .modal-body {
-    width: 440px;
-    padding: 40px;
+  .modal-body-login {
+    width: 100%;
+    padding: 0px;
     position: absolute;
     top: 50%;
     left: 50%;
-    border: 1px solid #b2d1f5;
     transform: translate(-50%,-50%);
     background-color: #191919;
     text-align: center;
     border-radius: 24px;
   }
 
-  .modal-content { 
+  .modal-content-login { 
     background-color: #191919;
     color: white;
     font-weight: 500;
@@ -60,10 +59,10 @@
   }
 
 
-  .modal-body .modal-content{
-    border: 0;
-   
+  .modal-body-login .modal-content{
+    border: 0; 
   }
+
   .box-btn-login{ 
     display: flex;
     justify-content: center;

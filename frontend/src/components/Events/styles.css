@@ -138,7 +138,17 @@
   
     color: var(--secondary-color);
   }
-
+  .modal-body {
+    width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 0;
+    transform: translate(-50%,-50%);
+    background-color: #191919;
+    text-align: center;
+    border-radius: 24px;
+  }
   .modal{
     height: 100%;
     width: 100%;
@@ -150,6 +160,7 @@
     justify-content: center;
     align-items: center;
   }
+  
 
   .filter {
     width: 80%;

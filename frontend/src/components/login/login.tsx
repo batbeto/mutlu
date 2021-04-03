@@ -67,9 +67,10 @@ function Login() {
               className="modalLogin"
               open={isOpen}
               onClose={handleModalClose}
-              closeAfterTransition >
-                  <div className="modal-body">
-                      <div className="modal-content">
+              closeAfterTransition
+               >
+                  <div className="modal-body-login">
+                      <div className="modal-content-login">
                       <Grid container spacing={3} direction="column" alignItems='center'>
                         <Grid item>
                           <form className="box-login">
