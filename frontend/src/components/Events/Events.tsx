@@ -2,7 +2,7 @@ import Steps from './Steps';
 import EventsList from './EventsList';
 import './styles.css';
 import { useEffect, useState } from 'react';
-import { Event } from './types'
+import { Event } from '../../services/types'
 import { fetchEvents } from '../../api';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 

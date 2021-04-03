@@ -1,6 +1,6 @@
 import './styles.css';
 import EventsCard from './EventsCard';
-import { Event } from './types';
+import { Event } from '../../services/types';
 
 type Props = {
     events: Event[]
