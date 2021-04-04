@@ -61,7 +61,10 @@ function Login() {
           open={Boolean(anchor)}
           onClose={handleMenuClose}
           anchorEl={anchor}>
-            <MenuItem onClick={logout}>SAIR</MenuItem>
+            <MenuItem>Perfil</MenuItem>
+            <MenuItem>Ver Mapa</MenuItem>
+            <MenuItem>Cadastrar Evento</MenuItem>
+            <MenuItem onClick={logout}>Sair</MenuItem>
         </Menu>       
         <Modal
               className="modalLogin"

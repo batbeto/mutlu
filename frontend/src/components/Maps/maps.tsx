@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import { fetchLocalMapBox } from '../../api';
+import { Event } from '../../services/types'
 import './styles.css';
 
 
@@ -18,10 +19,21 @@ type Place = {
   }
 }
 
+
 function Map() {
   const [address, setAddress] = useState<Place>({
     position: initialPosition
   });
+  const [events, setEvents] = useState<Event[]>([]);
+  //name: string;
+  //price: number;
+  //tickets: number;
+  //address: string;
+  //latitude: number;
+  //longitude: number;
+  //date: Date;
+  //description: string;
+  //imageUri: string; 
   
   const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
     fetchLocalMapBox(inputValue).then(({data}) => {
@@ -38,12 +50,9 @@ function Map() {
 
   const handleChangeSelect = (place: Place) => {
     setAddress(place);
-    //onChangeLocation({
-    //  latitude: place.position.lat,
-    //  longitude: place.position.lng,
-    //  address: place.label!
-    //});
   };
+
+  
   return (
     <div className="order-location-container">
       <div className="location-content">
@@ -59,16 +68,30 @@ function Map() {
           />
         </div>
         <div className="map-container">
-          <MapContainer  key={address.position.lat} style={{ width: "100%", height: "400px" }} center={address.position} zoom={15} scrollWheelZoom>
+          <MapContainer  key={address.position.lat} style={{ width: "650px", height: "400px" }} center={address.position} zoom={15} scrollWheelZoom>
             <TileLayer 
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             />
-            <Marker position={address.position}>
-              <Popup>
+            {address.position &&(
+              <Marker position={address.position}>
+                <Popup>
                 <span>{address.label}</span>
-              </Popup>
-            </Marker>
+                </Popup>
+              </Marker>
+            )}
+            {events.map((events) =>(
+              <Marker
+                key={events.id}
+                position={[events.latitude, events.longitude]}
+                >
+                  <Popup>
+                    <h3>{events.name}</h3>
+                    <p>{events.address}</p>
+                    <p>{events.price}</p>
+                  </Popup>
+              </Marker>
+            ))}
           </MapContainer>
         </div>
       </div>
