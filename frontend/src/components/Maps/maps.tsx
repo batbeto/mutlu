@@ -6,8 +6,8 @@ import './styles.css';
 
 
 const initialPosition = {
-  lat: 53.0,
-  lng: -0.09
+  lat: -6.457,
+  lng: -37.09
 }
 type Place = {
   label?: string;
@@ -34,7 +34,7 @@ function Map() {
           lng: item.center[0]
        }
       })))
-    }).catch(()=>console.log('void'))
+    })
  } 
 
   const handleChangeSelect = (place: Place) => {
