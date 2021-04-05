@@ -1,4 +1,5 @@
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { Map, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
 import Leaflet from "leaflet";
 import mapPin from "../../../assets/pin.svg";
 import mapHappy from "../../../assets/happy.svg";
@@ -7,9 +8,9 @@ import { Event } from '../../../services/types';
 import { FormEvent, useState } from 'react';
 import { fetchLocalMapBox } from "../../../api";
 import DatePicker from "react-datepicker";
-import FormControl from '@material-ui/core/FormControl';
+import AsyncSelect from "react-select/async";
 
-const initialPosition = { lat: 0, lng: 0 };
+const initialPosition = { lat: -22.2154042, lng: -54.8331331 };
 
 type Place = {
     label?: string;
@@ -62,10 +63,12 @@ interface Props {
 
 
 function CreateEvent({ event }: Props){
+    const [eventsEntities, setEventsEntities] = useState<Event[]>([]);
+
     const [address, setAddress] = useState<Place>({
         position: initialPosition
     })
-    const [newEvent, setNewEvent] = useState<Event[]>([]);
+        
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [tickets, setTickets] = useState(0);
@@ -94,8 +97,8 @@ function CreateEvent({ event }: Props){
         event.preventDefault()
         if(!address || !name) return;
 
-        setNewEvent([
-            ...newEvent,{
+        setEventsEntities([
+            ...eventsEntities,{
                 name,
                 address: address?.value || "",
                 date,
@@ -108,23 +111,57 @@ function CreateEvent({ event }: Props){
             }
         ])
         setAddress({ position: initialPosition })
+        setDescription('')
+        setTickets(0)
+        setPrice(0)
+        setimageUri('')
+        setDate(new Date())
     }
 
     return( 
         <div id="page-map">
             <LocationMarker />
             <main>
-                <form onSubmit={handleSubmit} className="form-event" noValidate autoComplete="off">
-                   <fieldset>
-                       <legend>Eventos</legend>
-                       <div className="input-block">
+                <form onSubmit={handleSubmit} className="landing-page-form">
+                    <fieldset>
+                        <legend>Entregas</legend>
+
+                        <div className="input-block">
                         <label htmlFor="name">Nome</label>
-                            <input type="text" />
-                            <DatePicker selected={date} onChange={d => setDate(d)} />
-                            
-                            
-                       </div>
-                   </fieldset>
+                        <input
+                            id="name"
+                            placeholder="Digite seu nome"
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                        />
+                        </div>
+
+                        <div className="input-block">
+                        <label htmlFor="address">Endereço</label>
+                        <AsyncSelect
+                            placeholder="Digite seu endereço..."
+                            classNamePrefix="filter"
+                            cacheOptions
+                            loadOptions={loadOptions}
+                            onChange={value => handleChangeSelect(value as Place)}
+                            value={address}
+                        />
+                        </div>
+
+                        <div className="input-block">
+                        <label htmlFor="tickets">Qtd. Tickets</label>
+                        <input
+                            placeholder="Qtd. Tickets"
+                            id="tickets"
+                            value={tickets}
+                            onChange={(event) => setTickets(event.target.value)}
+                        />
+                        </div>
+                    </fieldset>
+
+                    <button className="confirm-button" type="submit">
+                        Confirmar
+                    </button>
                 </form>
             </main>
         </div>
@@ -132,3 +169,7 @@ function CreateEvent({ event }: Props){
 }
 
 export default CreateEvent;
+
+
+
+
