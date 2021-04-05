@@ -4,10 +4,10 @@ import mapPin from "../../../assets/pin.svg";
 import mapHappy from "../../../assets/happy.svg";
 import './styles.css';
 import { Event } from '../../../services/types';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { fetchLocalMapBox } from "../../../api";
 
-const initialPosition = { lat: -22.2154042, lng: -54.8331331 };
+const initialPosition = { lat: 0, lng: 0 };
 
 type Place = {
     label?: string;
@@ -60,10 +60,10 @@ interface Props {
 
 
 function CreateEvent({ event }: Props){
-    const [addrress, setAddress] = useState<Place>({
+    const [address, setAddress] = useState<Place>({
         position: initialPosition
     })
-    const [newEvent, setNewEvent] = useState<Event>();
+    const [newEvent, setNewEvent] = useState<Event[]>([]);
 
     const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
         fetchLocalMapBox(inputValue).then(({data}) => {
@@ -82,8 +82,24 @@ function CreateEvent({ event }: Props){
         setAddress(place);
       };
     
-    async function handleSubmit(event: any) {
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault()
+        if(!address) return;
+
+        setNewEvent([
+            ...newEvent,{
+                name,
+                address: address?.value || "",
+                date,
+                description,
+                latitude: address.position.lat,
+                longitude: address.position.lng,
+                price ,
+                tickets,
+                imageUri
+            }
+        ])
+        setAddress(initialPosition)
     }
 
     return(
