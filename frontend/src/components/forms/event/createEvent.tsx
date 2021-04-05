@@ -137,24 +137,25 @@ function CreateEvent({ event }: Props){
                         </div>
 
                         <div className="input-block">
-                        <label htmlFor="address">Endereço</label>
-                        <AsyncSelect
-                            placeholder="Digite seu endereço..."
-                            classNamePrefix="filter"
-                            cacheOptions
-                            loadOptions={loadOptions}
-                            onChange={value => handleChangeSelect(value as Place)}
-                            value={address}
-                        />
+                            <label htmlFor="address">Endereço</label>
+                            <AsyncSelect
+                                placeholder="Digite seu endereço..."
+                                classNamePrefix="filter"
+                                cacheOptions
+                                loadOptions={loadOptions}
+                                onChange={value => handleChangeSelect(value as Place)}
+                                value={address}
+                            />
                         </div>
 
                         <div className="input-block">
                         <label htmlFor="tickets">Qtd. Tickets</label>
                         <input
                             placeholder="Qtd. Tickets"
+                            type='number'
                             id="tickets"
                             value={tickets}
-                            onChange={(event) => setTickets(event.target.value)}
+                            onChange={(event) => setTickets(+event.target.value)}
                         />
                         </div>
                     </fieldset>
