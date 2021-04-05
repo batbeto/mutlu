@@ -27,7 +27,7 @@ const LocationMarker = () => {
       },
       locationfound(e) {
         setPositionUser({
-            position: {
+            position: { 
                 lat: e.latlng.lat,
                 lng: e.latlng.lng
             }})
@@ -64,6 +64,12 @@ function CreateEvent({ event }: Props){
         position: initialPosition
     })
     const [newEvent, setNewEvent] = useState<Event[]>([]);
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [tickets, setTickets] = useState(0);
+    const [price, setPrice] = useState(0);
+    const [imageUri, setimageUri] = useState('');
+    const [date, setDate] = useState();
 
     const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
         fetchLocalMapBox(inputValue).then(({data}) => {
@@ -88,7 +94,6 @@ function CreateEvent({ event }: Props){
 
         setNewEvent([
             ...newEvent,{
-                id?,
                 name,
                 address: address?.value || "",
                 date,
@@ -100,7 +105,7 @@ function CreateEvent({ event }: Props){
                 imageUri
             }
         ])
-        setAddress(initialPosition)
+        setAddress({ position: initialPosition })
     }
 
     return( 
@@ -112,11 +117,9 @@ function CreateEvent({ event }: Props){
                        <legend>Eventos</legend>
                        <div className="input-block">
                         <label htmlFor="name">Nome</label>
-                        <input
-                            id="name"
-                            placeholder="Digite seu nome"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            
+                            
+                            
                        </div>
                    </fieldset>
                 </form>
