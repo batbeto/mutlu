@@ -6,6 +6,7 @@ import './styles.css';
 import { Event } from '../../../services/types';
 import { FormEvent, useState } from 'react';
 import { fetchLocalMapBox } from "../../../api";
+import DatePicker from "react-datepicker";
 
 const initialPosition = { lat: 0, lng: 0 };
 
@@ -69,7 +70,7 @@ function CreateEvent({ event }: Props){
     const [tickets, setTickets] = useState(0);
     const [price, setPrice] = useState(0);
     const [imageUri, setimageUri] = useState('');
-    const [date, setDate] = useState();
+    const [date, setDate] = useState(new Date());
 
     const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
         fetchLocalMapBox(inputValue).then(({data}) => {
@@ -117,7 +118,8 @@ function CreateEvent({ event }: Props){
                        <legend>Eventos</legend>
                        <div className="input-block">
                         <label htmlFor="name">Nome</label>
-                            
+                            <input type="text" />
+                            <DatePicker selected={date} onChange={d => setDate(d)} />
                             
                             
                        </div>
