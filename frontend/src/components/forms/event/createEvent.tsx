@@ -84,10 +84,11 @@ function CreateEvent({ event }: Props){
     
     async function handleSubmit(event: FormEvent) {
         event.preventDefault()
-        if(!address) return;
+        if(!address || !name) return;
 
         setNewEvent([
             ...newEvent,{
+                id?,
                 name,
                 address: address?.value || "",
                 date,
@@ -102,10 +103,25 @@ function CreateEvent({ event }: Props){
         setAddress(initialPosition)
     }
 
-    return(
-        <form onSubmit={handleSubmit} className="form-event" noValidate autoComplete="off">
+    return( 
+        <div id="page-map">
             <LocationMarker />
-        </form>
+            <main>
+                <form onSubmit={handleSubmit} className="form-event" noValidate autoComplete="off">
+                   <fieldset>
+                       <legend>Eventos</legend>
+                       <div className="input-block">
+                        <label htmlFor="name">Nome</label>
+                        <input
+                            id="name"
+                            placeholder="Digite seu nome"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                       </div>
+                   </fieldset>
+                </form>
+            </main>
+        </div>
     );
 }
 
