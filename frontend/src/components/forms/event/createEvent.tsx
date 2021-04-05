@@ -7,6 +7,7 @@ import { Event } from '../../../services/types';
 import { FormEvent, useState } from 'react';
 import { fetchLocalMapBox } from "../../../api";
 import DatePicker from "react-datepicker";
+import FormControl from '@material-ui/core/FormControl';
 
 const initialPosition = { lat: 0, lng: 0 };
 
