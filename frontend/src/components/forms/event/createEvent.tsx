@@ -1,5 +1,5 @@
 import "leaflet/dist/leaflet.css";
-import { Map, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
 import Leaflet from "leaflet";
 import mapPin from "../../../assets/pin.svg";
 import mapHappy from "../../../assets/happy.svg";
@@ -7,7 +7,6 @@ import './styles.css';
 import { Event } from '../../../services/types';
 import { FormEvent, useState } from 'react';
 import { fetchLocalMapBox } from "../../../api";
-import DatePicker from "react-datepicker";
 import AsyncSelect from "react-select/async";
 
 const initialPosition = { lat: -22.2154042, lng: -54.8331331 };
@@ -34,7 +33,7 @@ const LocationMarker = () => {
                 lat: e.latlng.lat,
                 lng: e.latlng.lng
             }})
-        map.flyTo(e.latlng, map.getZoom())
+        map.flyTo(positionUser.position, map.getZoom())
       },
     })
   
@@ -88,7 +87,7 @@ function CreateEvent({ event }: Props){
             })))
         })
     }
-    
+   
     const handleChangeSelect = (place: Place) => {
         setAddress(place);
       };
@@ -165,6 +164,45 @@ function CreateEvent({ event }: Props){
                     </button>
                 </form>
             </main>
+            <MapContainer
+                center={address.position}
+                zoom={15}
+                style={{ width: "100%", height: "100%" }}
+            >
+                {/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
+                <TileLayer
+                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_ACCESS_TOKEN_MAP_BOX}`}
+                />
+
+                {address.position && (
+                <Marker
+                    icon={mapPinIcon}
+                    position={[address.position.lat, address.position.lng]}
+                ></Marker>
+                )}
+
+                {eventsEntities.map((eventsEntities) => (
+                <Marker
+                    key={eventsEntities.id}
+                    icon={mapHappyIcon}
+                    position={[eventsEntities.latitude, eventsEntities.longitude]}
+                >
+                    <Popup
+                    closeButton={false}
+                    minWidth={240}
+                    maxWidth={240}
+                    className="map-popup"
+                    >
+                    <div>
+                        <h3>{eventsEntities.name}</h3>
+                        <p>
+                        {eventsEntities.address}
+                        </p>
+                    </div>
+                    </Popup>
+                </Marker>
+                ))}
+            </MapContainer>
         </div>
     );
 }
