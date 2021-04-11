@@ -2,7 +2,7 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
 import Leaflet from "leaflet";
 import mapPin from "../../../assets/pin.svg";
-import mapHappy from "../../../assets/happy.svg";
+import mapGuitar from "../../../assets/guitar.svg";
 import './styles.css';
 import { Event } from '../../../services/types';
 import { FormEvent, useState } from 'react';
@@ -34,11 +34,13 @@ const LocationMarker = () => {
                 lng: e.latlng.lng
             }})
         map.flyTo(positionUser.position, map.getZoom())
-      },
+      }, 
     })
   
     return positionUser === null ? null : (
-      <Marker position={positionUser.position}>
+      <Marker
+        icon={mapPinIcon}
+        position={positionUser.position}>
         <Popup>Você está aqui!</Popup>
       </Marker>
     )
@@ -49,19 +51,14 @@ const mapPinIcon = Leaflet.icon({
     iconAnchor: [29, 68],
     popupAnchor: [170, 2],
   });
-const mapHappyIcon = Leaflet.icon({
-    iconUrl: mapHappy,
+const mapGuitarIcon = Leaflet.icon({
+    iconUrl: mapGuitar,
     iconSize: [58, 68],
     iconAnchor: [29, 68],
     popupAnchor: [170, 2],
 });
 
-interface Props {
-    event: Event;
-}
-
-
-function CreateEvent({ event }: Props){
+function CreateEvent(){
     const [eventsEntities, setEventsEntities] = useState<Event[]>([]);
 
     const [address, setAddress] = useState<Place>({
@@ -119,11 +116,10 @@ function CreateEvent({ event }: Props){
 
     return( 
         <div id="page-map">
-            <LocationMarker />
             <main>
                 <form onSubmit={handleSubmit} className="landing-page-form">
                     <fieldset>
-                        <legend>Entregas</legend>
+                        <legend>Eventos</legend>
 
                         <div className="input-block">
                         <label htmlFor="name">Nome</label>
@@ -148,6 +144,16 @@ function CreateEvent({ event }: Props){
                         </div>
 
                         <div className="input-block">
+                        <label htmlFor="price">Preço</label>
+                        <input
+                            placeholder="Valor"
+                            type='number'
+                            id="price"
+                            value={tickets}
+                            onChange={(event) => setPrice(+event.target.value)}
+                        />
+                        </div>
+                        <div className="input-block">    
                         <label htmlFor="tickets">Qtd. Tickets</label>
                         <input
                             placeholder="Qtd. Tickets"
@@ -173,7 +179,7 @@ function CreateEvent({ event }: Props){
                 <TileLayer
                 url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_ACCESS_TOKEN_MAP_BOX}`}
                 />
-
+                <LocationMarker />
                 {address.position && (
                 <Marker
                     icon={mapPinIcon}
@@ -184,7 +190,7 @@ function CreateEvent({ event }: Props){
                 {eventsEntities.map((eventsEntities) => (
                 <Marker
                     key={eventsEntities.id}
-                    icon={mapHappyIcon}
+                    icon={mapGuitarIcon}
                     position={[eventsEntities.latitude, eventsEntities.longitude]}
                 >
                     <Popup

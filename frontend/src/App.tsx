@@ -8,7 +8,7 @@ import { AuthContext } from './services/auth'
 const Navbar = lazy(() => import('./components/Navbar'));
 const Home = lazy(() => import('./components/Home'));
 const Events = lazy(() => import('./components/Events'));
-
+const MapEvent = lazy(() => import('./components/forms/event'));
 
 function App({ location }:any) {
   const { userInfo, setUserInfo } = useContext(AuthContext)
@@ -35,7 +35,7 @@ function App({ location }:any) {
     <Suspense fallback={<LinearProgress />}>
       <Navbar />  
       <Switch>
-        <Route path='/events' component={Events}/>
+        <Route path='/events' component={MapEvent}/>
         <Route path='/' component={Home} exact />
       </Switch>
     </Suspense>
