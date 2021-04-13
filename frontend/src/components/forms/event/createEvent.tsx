@@ -8,6 +8,7 @@ import { Event } from '../../../services/types';
 import { FormEvent, useState } from 'react';
 import { fetchLocalMapBox } from "../../../api";
 import AsyncSelect from "react-select/async";
+import TextField from '@material-ui/core/TextField';
 
 const initialPosition = { lat: -22.2154042, lng: -54.8331331 };
 
@@ -117,6 +118,19 @@ function CreateEvent(){
                                 value={address}
                             />
                         </div>
+                        <TextField
+                            id="datetime-local"
+                            label="Data/Hora"
+                            type="datetime-local"
+                            defaultValue="2021-01-01T10:30"
+                            className='input-block'
+                            InputLabelProps={{
+                              shrink: true,
+                            }}
+                            InputProps={{
+                                disableUnderline: true,
+                               }}
+                        />
 
                         <div className="input-block">
                         <label htmlFor="price">Preço</label>
