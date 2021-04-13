@@ -1,5 +1,5 @@
 import "leaflet/dist/leaflet.css";
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import Leaflet from "leaflet";
 import mapPin from "../../../assets/pin.svg";
 import mapGuitar from "../../../assets/guitar.svg";
@@ -19,32 +19,7 @@ type Place = {
       lng: number;
     }
 }
-const LocationMarker = () => {
-    const [positionUser, setPositionUser] = useState<Place>({
-        position: initialPosition
-    })
-    const map = useMapEvents({
-      click() {
-        map.locate()
-      },
-      locationfound(e) {
-        setPositionUser({
-            position: { 
-                lat: e.latlng.lat,
-                lng: e.latlng.lng
-            }})
-        map.flyTo(positionUser.position, map.getZoom())
-      }, 
-    })
-  
-    return positionUser === null ? null : (
-      <Marker
-        icon={mapPinIcon}
-        position={positionUser.position}>
-        <Popup>Você está aqui!</Popup>
-      </Marker>
-    )
-}
+
 const mapPinIcon = Leaflet.icon({
     iconUrl: mapPin,
     iconSize: [58, 68],
@@ -69,21 +44,21 @@ function CreateEvent(){
     const [description, setDescription] = useState('');
     const [tickets, setTickets] = useState(0);
     const [price, setPrice] = useState(0);
-    const [imageUri, setimageUri] = useState('');
+    const [imageUri, setImageUri] = useState('');
     const [date, setDate] = useState(new Date());
 
     const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
         fetchLocalMapBox(inputValue).then(({data}) => {
-            callback(data.features.map((item: any) => ({
+          callback(data.features.map((item: any) => ({
             label: item.place_name,
             value: item.place_name,
             position: {
-                lat: item.center[1],
-                lng: item.center[0]
-            }
-            })))
+              lat: item.center[1],
+              lng: item.center[0]
+           }
+          })))
         })
-    }
+     }
    
     const handleChangeSelect = (place: Place) => {
         setAddress(place);
@@ -101,7 +76,7 @@ function CreateEvent(){
                 description,
                 latitude: address.position.lat,
                 longitude: address.position.lng,
-                price ,
+                price,
                 tickets,
                 imageUri
             }
@@ -110,7 +85,7 @@ function CreateEvent(){
         setDescription('')
         setTickets(0)
         setPrice(0)
-        setimageUri('')
+        setImageUri('')
         setDate(new Date())
     }
 
@@ -163,6 +138,16 @@ function CreateEvent(){
                             onChange={(event) => setTickets(+event.target.value)}
                         />
                         </div>
+                        <div className="input-block">    
+                        <label htmlFor="imgUri">Imagem</label>
+                        <input
+                            placeholder="URL do poster"
+                            type='text'
+                            id="imgUri"
+                            value={imageUri}
+                            onChange={(event) => setImageUri(event.target.value)}
+                        />
+                        </div>
                     </fieldset>
 
                     <button className="confirm-button" type="submit">
@@ -172,14 +157,13 @@ function CreateEvent(){
             </main>
             <MapContainer
                 center={address.position}
-                zoom={15}
+                zoom={13}
                 style={{ width: "100%", height: "100%" }}
             >
                 {/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
                 <TileLayer
                 url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_ACCESS_TOKEN_MAP_BOX}`}
                 />
-                <LocationMarker />
                 {address.position && (
                 <Marker
                     icon={mapPinIcon}
@@ -194,15 +178,16 @@ function CreateEvent(){
                     position={[eventsEntities.latitude, eventsEntities.longitude]}
                 >
                     <Popup
-                    closeButton={false}
-                    minWidth={240}
-                    maxWidth={240}
-                    className="map-popup"
+                        closeButton={false}
+                        minWidth={240}
+                        maxWidth={240}
+                        className="map-popup"
                     >
                     <div>
                         <h3>{eventsEntities.name}</h3>
                         <p>
-                        {eventsEntities.address}
+                            {eventsEntities.address}
+                            {eventsEntities.price}
                         </p>
                     </div>
                     </Popup>

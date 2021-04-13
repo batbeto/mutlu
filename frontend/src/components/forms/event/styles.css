@@ -48,14 +48,14 @@
     display: flex;
     color: #8fa7b3;
     margin-bottom: 8px;
-    line-height: 24px;
+    line-height: 4px;
   }
   
   form.landing-page-form .input-block label span {
     font-size: 14px;
     color: #8fa7b3;
     margin-left: 24px;
-    line-height: 24px;
+    line-height: 8px;
   }
   
   form.landing-page-form .input-block input {
@@ -68,12 +68,12 @@
   }
   
   form.landing-page-form .input-block input {
-    height: 44px;
+    height: 32px;
     padding: 0 16px;
   }
   
   form.landing-page-form button.confirm-button {
-    margin-top: 34px;
+    margin-top: 16px;
   
     width: 100%;
     height: 64px;
