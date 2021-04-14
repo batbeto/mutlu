@@ -2,7 +2,7 @@ import { Event } from "../../services/types";
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import Map from '../Maps'
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -64,7 +64,7 @@ function EventsCard({ event }: Props){
             >
               <div className="modal-body">
                 <div className={classes.paper}>
-                  <Map />
+                  
                 </div>
               </div>
             </Modal>

@@ -43,7 +43,7 @@ function CreateEvent(){
         
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [tickets, setTickets] = useState(0);
+    const [tickets, setTickets] = useState(1);
     const [price, setPrice] = useState(0);
     const [imageUri, setImageUri] = useState('');
     const [date, setDate] = useState(new Date());
@@ -84,10 +84,17 @@ function CreateEvent(){
         ])
         setAddress({ position: initialPosition })
         setDescription('')
-        setTickets(0)
+        setTickets(1)
         setPrice(0)
         setImageUri('')
         setDate(new Date())
+    }
+    function handleChangeTickets(e: any) {
+        const { value } = e.target
+        if (value >= 1){
+            setTickets(e.target.value)
+        }
+            
     }
 
     return( 
@@ -104,6 +111,7 @@ function CreateEvent(){
                             placeholder="Digite seu nome"
                             value={name}
                             onChange={(event) => setName(event.target.value)}
+                            required={true}
                         />
                         </div>
 
@@ -113,6 +121,7 @@ function CreateEvent(){
                                 placeholder="Digite seu endereço..."
                                 classNamePrefix="filter"
                                 cacheOptions
+                                required={true}
                                 loadOptions={loadOptions}
                                 onChange={value => handleChangeSelect(value as Place)}
                                 value={address}
@@ -122,14 +131,14 @@ function CreateEvent(){
                             id="datetime-local"
                             label="Data/Hora"
                             type="datetime-local"
-                            defaultValue="2021-01-01T10:30"
                             className='input-block'
+                            required={true}
                             InputLabelProps={{
                               shrink: true,
                             }}
                             InputProps={{
                                 disableUnderline: true,
-                               }}
+                            }}
                         />
 
                         <div className="input-block">
@@ -138,7 +147,7 @@ function CreateEvent(){
                             placeholder="Valor"
                             type='number'
                             id="price"
-                            value={tickets}
+                            value={price}
                             onChange={(event) => setPrice(+event.target.value)}
                         />
                         </div>
@@ -149,7 +158,7 @@ function CreateEvent(){
                             type='number'
                             id="tickets"
                             value={tickets}
-                            onChange={(event) => setTickets(+event.target.value)}
+                            onChange={handleChangeTickets}
                         />
                         </div>
                         <div className="input-block">    
@@ -170,6 +179,7 @@ function CreateEvent(){
                 </form>
             </main>
             <MapContainer
+                key={address.position.lat}
                 center={address.position}
                 zoom={13}
                 style={{ width: "100%", height: "100%" }}
