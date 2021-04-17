@@ -101,16 +101,14 @@ function CreateEvent(){
         setImageUri('')
         setDate(new Date())
     }
+    
     function handleChangeTickets(e: any) {
         const { value } = e.target
         if (value >= 1){
             setTickets(e.target.value)
         }
     }
-    function handleChangePrice(value: any){
-        setPrice(value)
-    }
-
+   
     return( 
         <div id="page-map">
             <main>
@@ -161,9 +159,10 @@ function CreateEvent(){
                             className="input-block"
                             placeholder="Valor"
                             id="price"
+                            required={true}
                             allowNegativeValue={false}                           
                             value={price}
-                            onValueChange={value => handleChangePrice(value)}
+                            onValueChange={value => setPrice(value as any)}
                             intlConfig={{ locale: 'pt-BR', currency: 'BRL' }}
                         />
                         </div>
@@ -175,6 +174,7 @@ function CreateEvent(){
                             id="tickets"
                             value={tickets}
                             onChange={handleChangeTickets}
+                            required={true}
                         />
                         </div>
                         <div className="input-block">    
@@ -185,6 +185,7 @@ function CreateEvent(){
                             id="imgUri"
                             value={imageUri}
                             onChange={(event) => setImageUri(event.target.value)}
+                            required={true}
                         />
                         </div>
                         <div className="input-block">
@@ -195,6 +196,7 @@ function CreateEvent(){
                             id="description"
                             value={description}
                             onChange={(event) => setDescription(event.target.value)}
+                            required={true}
                         />
                         </div>
                     </fieldset>
