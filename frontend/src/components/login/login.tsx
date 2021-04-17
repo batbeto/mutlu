@@ -13,7 +13,7 @@ import Modal from '@material-ui/core/Modal';
 import './styles.css';
 import { useState, useContext } from 'react';
 import { AuthContext } from '../../services/auth';
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -61,9 +61,18 @@ function Login() {
           open={Boolean(anchor)}
           onClose={handleMenuClose}
           anchorEl={anchor}>
-            <MenuItem>Perfil</MenuItem>
-            <MenuItem>Ver Mapa</MenuItem>
-            <MenuItem>Cadastrar Evento</MenuItem>
+            <MenuItem 
+              component={Link} to= "/events"
+              onClick={handleMenuClose}
+              >Ver Cards</MenuItem>
+            <MenuItem 
+              component={Link} to= "/maps"
+              onClick={handleMenuClose}
+              >Ver Mapa</MenuItem>
+            <MenuItem 
+              component={Link} to= "/create/events"
+              onClick={handleMenuClose}
+              >Criar Evento</MenuItem>
             <MenuItem onClick={logout}>Sair</MenuItem>
         </Menu>       
         <Modal

@@ -28,7 +28,7 @@ function App({ location }:any) {
   
   if (!checkUserIn) return <LinearProgress />
 
-  if (isUserLoggedIn && location.pathname !== '/events') return <Redirect to='/events'/>
+  if (isUserLoggedIn && location.pathname === '/') return <Redirect to='/events'/>
 
   if (!isUserLoggedIn && location.pathname !== '/') return <Redirect to='/'/>
 
@@ -36,7 +36,9 @@ function App({ location }:any) {
     <Suspense fallback={<LinearProgress />}>
       <Navbar />  
       <Switch>
-        <Route path='/events' component={Maps}/>
+        <Route path='/create/events' component ={MapEvent} />
+        <Route path='/events' component={Events}/>
+        <Route path='/maps' component={Maps} />
         <Route path='/' component={Home} exact />
       </Switch>
     </Suspense>
