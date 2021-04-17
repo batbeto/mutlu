@@ -1,7 +1,7 @@
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import Leaflet from "leaflet";
-import mapGuitar from "../../../assets/guitar.svg";
+import mapGuitar from "../../assets/guitar.svg";
 import './styles.css';
 import { Event } from '../../services/types';
 import { useState } from 'react';
