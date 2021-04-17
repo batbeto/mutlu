@@ -5,11 +5,12 @@ import mapPin from "../../../assets/pin.svg";
 import mapGuitar from "../../../assets/guitar.svg";
 import './styles.css';
 import { Event } from '../../../services/types';
-import { FormEvent, useState } from 'react';
-import { fetchLocalMapBox } from "../../../api";
+import { FormEvent, useState, useEffect } from 'react';
+import { fetchLocalMapBox, fetchEvents } from "../../../api";
 import AsyncSelect from "react-select/async";
 import TextField from '@material-ui/core/TextField';
 import CurrencyInput from 'react-currency-input-field';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 const initialPosition = { lat: -22.2154042, lng: -44.8331331 };
 
@@ -48,6 +49,16 @@ function CreateEvent(){
     const [price, setPrice] = useState(0);
     const [imageUri, setImageUri] = useState('');
     const [date, setDate] = useState(new Date());
+    
+    useEffect( () => {
+        fetchEvents()
+            .then(response => setEventsEntities(response.data))
+            .catch(() =>
+                <span>
+                    <SnackbarContent message="Erro ao listar os eventos" action={'x'} />
+                </span>
+             )
+    },[]);
 
     const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
         fetchLocalMapBox(inputValue).then(({data}) => {
