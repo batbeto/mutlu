@@ -80,12 +80,13 @@ function CreateEvent(){
                 zoom={13}
                 style={{ width: "100%", height: "100%" }}
             >
-                {/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
                 <TileLayer
-                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_ACCESS_TOKEN_MAP_BOX}`}
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {eventsEntities.map((eventsEntities) => (
-                <Marker     
+                <Marker  
+                    key={eventsEntities.id}
                     icon={mapGuitarIcon}
                     position={[eventsEntities.latitude, eventsEntities.longitude]}>
                     <Popup
