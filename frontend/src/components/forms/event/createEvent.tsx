@@ -9,8 +9,9 @@ import { FormEvent, useState } from 'react';
 import { fetchLocalMapBox } from "../../../api";
 import AsyncSelect from "react-select/async";
 import TextField from '@material-ui/core/TextField';
+import CurrencyInput from 'react-currency-input-field';
 
-const initialPosition = { lat: -22.2154042, lng: -54.8331331 };
+const initialPosition = { lat: -22.2154042, lng: -44.8331331 };
 
 type Place = {
     label?: string;
@@ -94,7 +95,9 @@ function CreateEvent(){
         if (value >= 1){
             setTickets(e.target.value)
         }
-            
+    }
+    function handleChangePrice(value: any){
+        setPrice(value)
     }
 
     return( 
@@ -143,12 +146,14 @@ function CreateEvent(){
 
                         <div className="input-block">
                         <label htmlFor="price">Preço</label>
-                        <input
+                        <CurrencyInput 
+                            className="input-block"
                             placeholder="Valor"
-                            type='number'
                             id="price"
+                            allowNegativeValue={false}                           
                             value={price}
-                            onChange={(event) => setPrice(+event.target.value)}
+                            onValueChange={value => handleChangePrice(value)}
+                            intlConfig={{ locale: 'pt-BR', currency: 'BRL' }}
                         />
                         </div>
                         <div className="input-block">    
@@ -196,11 +201,9 @@ function CreateEvent(){
                 )}
 
                 {eventsEntities.map((eventsEntities) => (
-                <Marker
-                    key={eventsEntities.id}
+                <Marker     
                     icon={mapGuitarIcon}
-                    position={[eventsEntities.latitude, eventsEntities.longitude]}
-                >
+                    position={[eventsEntities.latitude, eventsEntities.longitude]}>
                     <Popup
                         closeButton={false}
                         minWidth={240}

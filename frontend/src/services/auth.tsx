@@ -31,7 +31,7 @@ function Auth({ children }:any){
            setUserInfo({isUserLoggedIn: false, user: null
           })
         })
-      }, [])
+      }, []) 
       
     return (
         <AuthContext.Provider value={{
