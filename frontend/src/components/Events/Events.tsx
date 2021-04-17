@@ -13,7 +13,7 @@ export default function Events(){
     useEffect( () => {
         fetchEvents()
             .then(response => setEvents(response.data))
-            .catch(error =>
+            .catch(() =>
                 <span>
                     <SnackbarContent message="Erro ao listar os eventos" action={'x'} />
                 </span>
