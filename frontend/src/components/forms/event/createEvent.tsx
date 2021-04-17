@@ -176,6 +176,16 @@ function CreateEvent(){
                             onChange={(event) => setImageUri(event.target.value)}
                         />
                         </div>
+                        <div className="input-block">
+                        <label htmlFor="description">Descrição do Evento</label>
+                        <input
+                            placeholder="Descrição do evento"
+                            type='text'
+                            id="description"
+                            value={description}
+                            onChange={(event) => setDescription(event.target.value)}
+                        />
+                        </div>
                     </fieldset>
 
                     <button className="confirm-button" type="submit">
