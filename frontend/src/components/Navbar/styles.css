@@ -1,6 +1,7 @@
   .btn_position {
     display: flex;
     right: 0%;
+    left: 90%;
     position: absolute;
   }
   

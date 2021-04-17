@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.background.paper,
       border: 0,
       boxShadow: theme.shadows[5],
-      padding: theme.spacing(0, 1, 1),
     },
   }),
 );
@@ -64,7 +63,7 @@ function EventsCard({ event }: Props){
             >
               <div className="modal-body">
                 <div className={classes.paper}>
-                  
+                  <img src={event.imageUri} alt={event.name} />
                 </div>
               </div>
             </Modal>
