@@ -12,11 +12,11 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 	List<Event> findAllByOrderByNameAsc();
 	
 	@Query("SELECT DISTINCT obj FROM Event obj "
-			+ " WHERE obj.status = 0 ORDER BY obj.moment ASC")
+			+ " WHERE obj.status = 0")
 	List<Event> findEventsPending();
 	
 	@Query("SELECT DISTINCT obj FROM Event obj "
-			+ " WHERE obj.status = 1 ORDER BY obj.moment ASC")
+			+ " WHERE obj.status = 1")
 	List<Event> findEventsConclused();
 }
 
