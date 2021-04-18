@@ -49,7 +49,8 @@ function CreateEvent(){
     const [price, setPrice] = useState(0);
     const [imageUri, setImageUri] = useState('');
     const [date, setDate] = useState(new Date());
-    
+    const [status, setStatus] = useState(0);
+
     useEffect( () => {
         fetchEvents()
             .then(response => setEventsEntities(response.data))
@@ -91,7 +92,8 @@ function CreateEvent(){
                 longitude: address.position.lng,
                 price,
                 tickets,
-                imageUri
+                imageUri,
+                status,
             }
         ])
         setAddress({ position: initialPosition })
@@ -100,6 +102,7 @@ function CreateEvent(){
         setPrice(0)
         setImageUri('')
         setDate(new Date())
+        setStatus(0)
     }
     
     function handleChangeTickets(e: any) {

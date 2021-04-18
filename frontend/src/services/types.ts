@@ -13,6 +13,7 @@ export type Event = {
     date: Date;
     description: string;
     imageUri: string;
+    status: OrderStatus;
 }
 
 
