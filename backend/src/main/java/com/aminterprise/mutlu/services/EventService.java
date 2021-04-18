@@ -21,11 +21,16 @@ public class EventService {
 	private EventRepository repository;
 	
 	@Transactional(readOnly = true)
-	public List<EventDTO> findAll(){
+	public List<EventDTO> findActive(){
 		List<Event> list = repository.findEventsPending();
 		return list.stream().map(x -> new EventDTO(x)).collect(Collectors.toList());
 	}
 	
+	@Transactional(readOnly = true)
+	public List<EventDTO> findAll(){
+		List<Event> list = repository.findAllByOrderByNameAsc();
+		return list.stream().map(x -> new EventDTO(x)).collect(Collectors.toList());
+	}
 	
 	@Transactional
 	public EventDTO insert(EventDTO dto) {
