@@ -51,6 +51,17 @@ public class OrderService {
 	}
 	
 	@Transactional
+	public OrderDTO updateOrder(Long id, OrderDTO newOrder) {
+		Order order = repository.getOne(id);
+		order.setMoment(newOrder.getMoment());
+		order.setPrice(newOrder.getPrice());
+		order.setQtd(newOrder.getQtd());
+		order.setTotal(newOrder.getTotal());
+		order = repository.save(order);
+		return new OrderDTO(order);
+	}
+	
+	@Transactional
 	public OrderDTO setConclused(Long id) {
 		Order order = repository.getOne(id);
 		order.setStatus(OrderStatus.CONCLUSED);
@@ -65,4 +76,5 @@ public class OrderService {
 		order = repository.save(order);
 		return new OrderDTO(order);
 	}
+	
 }

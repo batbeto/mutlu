@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.aminterprise.mutlu.entities.Event;
+import com.aminterprise.mutlu.entities.OrderStatus;
 
 public class EventDTO implements Serializable {
 	
@@ -19,13 +20,14 @@ public class EventDTO implements Serializable {
 	private Date date; 
 	private String description;
 	private String imageUri;
+	private OrderStatus status;
 	
 	public EventDTO() {
 	}
 
 	
 	public EventDTO(Long id, String name, Double price, Long tickets, String address, Double latitude, Double longitude,
-			Date date, String description, String imageUri) {
+			Date date, String description, String imageUri, OrderStatus status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -37,6 +39,7 @@ public class EventDTO implements Serializable {
 		this.date = date;
 		this.description = description;
 		this.imageUri = imageUri;
+		this.setStatus(status);
 	}
 
 
@@ -53,6 +56,7 @@ public class EventDTO implements Serializable {
 		date = entity.getDate();
 		description = entity.getDescription();
 		imageUri = entity.getImageUri();
+		setStatus(entity.getStatus());
 	}
 
 
@@ -153,6 +157,16 @@ public class EventDTO implements Serializable {
 
 	public void setImageUri(String imageUri) {
 		this.imageUri = imageUri;
+	}
+
+
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
 	}
 
 	

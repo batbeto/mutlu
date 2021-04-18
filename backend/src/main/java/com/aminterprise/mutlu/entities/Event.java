@@ -29,12 +29,13 @@ public class Event implements Serializable {
 	private Date date; 
 	private String description;
 	private String imageUri;
+	private OrderStatus status;
 	
 	public Event() {
 	}
 
 	public Event(Long id, String name, Double price, Long tickets, String address, Double latitude, Double longitude,
-			Date date, String description, String imageUri) {
+			Date date, String description, String imageUri, OrderStatus status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -46,6 +47,7 @@ public class Event implements Serializable {
 		this.date = date;
 		this.description = description;
 		this.imageUri = imageUri;
+		this.status = status;
 	}
 
 	public Long getId() {
@@ -128,6 +130,14 @@ public class Event implements Serializable {
 		this.imageUri = imageUri;
 	}
 
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -151,5 +161,6 @@ public class Event implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+
 }

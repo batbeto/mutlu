@@ -57,73 +57,73 @@ function Login() {
                 <MenuIcon />
               </IconButton>
             } 
-        <Menu
-          open={Boolean(anchor)}
-          onClose={handleMenuClose}
-          anchorEl={anchor}>
-            <MenuItem 
-              component={Link} to= "/events"
-              onClick={handleMenuClose}
-              >Ver Cards</MenuItem>
-            <MenuItem 
-              component={Link} to= "/maps"
-              onClick={handleMenuClose}
-              >Ver Mapa</MenuItem>
-            <MenuItem 
-              component={Link} to= "/create/events"
-              onClick={handleMenuClose}
-              >Criar Evento</MenuItem>
-            <MenuItem onClick={logout}>Sair</MenuItem>
-        </Menu>       
-        <Modal
-              className="modalLogin"
-              open={isOpen}
-              onClose={handleModalClose}
-              closeAfterTransition
-               >
-                  <div className="modal-content-login">
-                      <div className="modal-body-login">
-                      <Grid container spacing={3} direction="column" alignItems='center'>
-                        <Grid item>
-                          <form className="box-login">
-                              <Logo width="30px" height="30px"/> <h1>LOGIN</h1>
-                              <input type="text" placeholder="Email "/>
-                              <input type="password" placeholder="Senha "/>
-                              <div className="box-btn-login">
-                                <input type="submit" value="ENTRAR"/>
-                                <input type="submit" value="REGISTRO"/>
-                              </div>
-                              Esqueceu <a href="/">email</a> ou a <a href="/">senha</a>? 
-                          </form>
-                        </Grid>
-                        <Grid container spacing={1} justify="center" alignItems='center' className='btn_auth'>
-                          <Grid item xs={12}>
-                            <Button
+          <Menu
+            open={Boolean(anchor)}
+            onClose={handleMenuClose}
+            anchorEl={anchor}>
+              <MenuItem 
+                component={Link} to= "/events"
+                onClick={handleMenuClose}
+                >Ver Cards</MenuItem>
+              <MenuItem 
+                component={Link} to= "/maps"
+                onClick={handleMenuClose}
+                >Ver Mapa</MenuItem>
+              <MenuItem 
+                component={Link} to= "/create/events"
+                onClick={handleMenuClose}
+                >Criar Evento</MenuItem>
+              <MenuItem onClick={logout}>Sair</MenuItem>
+          </Menu>       
+          <Modal
+                className="modalLogin"
+                open={isOpen}
+                onClose={handleModalClose}
+                closeAfterTransition
+                >
+                    <div className="modal-content-login">
+                        <div className="modal-body-login">
+                        <Grid container spacing={3} direction="column" alignItems='center'>
+                          <Grid item>
+                            <form className="box-login">
+                                <Logo width="30px" height="30px"/> <h1>LOGIN</h1>
+                                <input type="text" placeholder="Email "/>
+                                <input type="password" placeholder="Senha "/>
+                                <div className="box-btn-login">
+                                  <input type="submit" value="ENTRAR"/>
+                                  <input type="submit" value="REGISTRO"/>
+                                </div>
+                                Esqueceu <a href="/">email</a> ou a <a href="/">senha</a>? 
+                            </form>
+                          </Grid>
+                          <Grid container spacing={1} justify="center" alignItems='center' className='btn_auth'>
+                            <Grid item xs={12}>
+                              <Button
+                                className="btn-grid"
+                                variant="contained" 
+                                color="primary"
+                                fullWidth
+                                onClick={logon_google}
+                              >
+                                <Google width="20px" height="20px"  /><strong>oogle</strong>
+                              </Button>
+                            </Grid>
+                            <Grid item xs={12}> 
+                              <Button
                               className="btn-grid"
                               variant="contained" 
                               color="primary"
                               fullWidth
-                              onClick={logon_google}
-                            >
-                              <Google width="20px" height="20px"  /><strong>oogle</strong>
-                            </Button>
-                          </Grid>
-                          <Grid item xs={12}> 
-                            <Button
-                            className="btn-grid"
-                            variant="contained" 
-                            color="primary"
-                            fullWidth
-                            onClick={logon_git}
-                            >
-                              <Git width="17px" height="17px" /><strong>Github</strong>
-                            </Button>
+                              onClick={logon_git}
+                              >
+                                <Git width="17px" height="17px" /><strong>Github</strong>
+                              </Button>
+                            </Grid>
                           </Grid>
                         </Grid>
-                      </Grid>
-                      </div>
-                  </div>
-          </Modal>
+                        </div>
+                    </div>
+            </Modal>
         
       </div>
     )
