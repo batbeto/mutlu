@@ -2,7 +2,6 @@ package com.aminterprise.mutlu.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -13,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.aminterprise.mutlu.dto.EventDTO;
 
 @Entity
 @Table(name = "tb_user")
@@ -103,9 +100,6 @@ public class User implements Serializable{
 		return events;
 	}
 
-	public void setEvents(Set<Event> events) {
-		this.events = events;
-	}
 
 	@Override
 	public int hashCode() {

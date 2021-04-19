@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.aminterprise.mutlu.dto.EventDTO;
 import com.aminterprise.mutlu.dto.UserDTO;
-import com.aminterprise.mutlu.entities.Order;
+import com.aminterprise.mutlu.entities.Event;
 import com.aminterprise.mutlu.entities.User;
+import com.aminterprise.mutlu.repositories.EventRepository;
 import com.aminterprise.mutlu.repositories.UserRepository;
 
 @Service
@@ -18,6 +19,9 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository repository;
+	
+	@Autowired
+	private EventRepository eventRepository;
 	
 	@Transactional(readOnly = true)
 	public List<UserDTO> findAll(){
@@ -34,6 +38,10 @@ public class UserService {
 				dto.getCpf(),
 				dto.getPass(),
 				dto.getStatus());
+		for (EventDTO p : dto.getEvents()) {
+			Event event = eventRepository.getOne(p.getId());
+			user.getEvents().add(event);
+		}
 		user = repository.save(user);
 		return new UserDTO(user);
 	}
