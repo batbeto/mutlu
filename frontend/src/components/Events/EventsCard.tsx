@@ -2,7 +2,7 @@ import { Event } from "../../services/types";
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-
+import { formatPrice } from '../../util/util';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -23,64 +23,59 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type Props = {
   event: Event;
+  onSelectEvent: (event: Event) => void;
+  isSelected: boolean;
 }
 
-function formatPrice(price: number){
-  const formatter = new Intl.NumberFormat(('pt-BR'), {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2
 
-  });
-
-  return formatter.format(price);
-}
-
-function EventsCard({ event }: Props){
+function EventsCard({ event, onSelectEvent, isSelected }: Props){
   const [open, setOpen] = React.useState(false); 
   
   const classes = useStyles();
-    const handleClose = () => {
-      setOpen(false);
-    };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    return (
-      <div>
-        <div className="order-card-container">
-          <h3 className="order-card-title">
-            {event.name}
-          </h3>
-          <img 
-            className="order-card-image" 
-            src={event.imageUri} alt={event.name}
-            onClick={() => setOpen(true)}/>
-            {open ? 
-              <Modal
-              className={classes.modal}
-              open={open}
-              onClose={handleClose}
-              closeAfterTransition
-            >
-              <div className="modal-body">
-                <div className={classes.paper}>
-                  <img src={event.imageUri} alt={event.name} />
-                </div>
+  return (
+    <div>
+      <div 
+      className={`order-card-container ${isSelected ? 'selected' : ''}`}
+      onClick = {() => onSelectEvent(event)}
+      >
+        <h3 className="order-card-title">
+          {event.name}
+        </h3>
+        <img 
+          className="order-card-image" 
+          src={event.imageUri} alt={event.name}
+          onClick={() => setOpen(true)}/>
+          {open ? 
+            <Modal
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+          >
+            <div className="modal-body">
+              <div className={classes.paper}>
+                <img src={event.imageUri} alt={event.name} />
               </div>
-            </Modal>
-            : null}
-          <h3 className="order-card-price">
-             {formatPrice(event.price)}
-          </h3>
-          <div className="order-card-description">
-            <h3>Descrição:</h3>
-            <p>
-              {event.description}
-            </p>
-          </div>
-       </div>
-     </div>
-    );
-  }
+            </div>
+          </Modal>
+          : null}
+        <h3 className="order-card-price">
+            {formatPrice(event.price)}
+        </h3>
+        <div className="order-card-description">
+          <h3>Descrição:</h3>
+          <p>
+            {event.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 
 export default EventsCard;

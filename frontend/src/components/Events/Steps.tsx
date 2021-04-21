@@ -1,12 +1,26 @@
-function Steps(){
+import { formatPrice } from '../../util/util';
+
+type Props = {
+    amount: number;
+    totalPrice: number;
+}
+function Steps({amount, totalPrice}: Props){
       return (
-        <header className="orders-steps-container">
-            <div className="orders-steps-content">
-                <h1 className="steps-title">
-                    Selecione um <br /> evento ou clique no <br /> <strong>mapa</strong> no menu!
-                </h1>
+        <div className="order-summary-container">
+            <div className="order-summary-content">
+                <div>
+                    <span className="amount-selected-container">
+                        <strong className="amount-selected">{amount}</strong>
+                        EVENTOS SELECIONADOS
+                    </span>
+                    <span className="order-summary-total">
+                        <strong className="amount-selected">{formatPrice(totalPrice)}</strong>
+                        VALOR TOTAL
+                    </span>
+                </div>
+                <button className="order-summary-make-order">FINALIZAR COMPRA</button>
             </div>
-        </header>
+        </div>
     )
 }
 

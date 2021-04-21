@@ -58,7 +58,7 @@
   
   .orders-list-items {
     width: 80%;
-    padding-left: 40px;
+    padding: 40px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 235px);
     grid-gap: 20px 15px;
@@ -74,7 +74,7 @@
   }
   
   .order-card-container.selected {
-    border: 4px solid #0a55aa;
+    border: 4px solid #008E5B;
     box-sizing: border-box;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -180,7 +180,9 @@
   .order-summary-container {
     display: flex;
     justify-content: center;
+    padding: 20px;
     margin-bottom: 30px;
+    
   }
   
   .order-summary-content {
@@ -190,7 +192,7 @@
     background: #FFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    background-color: var(--primary-color);
+    background-color: #008E5B;
     color: #FFF;
     padding: 20px;
   }
@@ -240,7 +242,7 @@
     line-height: 25px;
     text-align: center;
     letter-spacing: -0.015em;
-    color: var(--primary-color);
+    color: #008E5B;
     border: 0;
     cursor: pointer;
   }
@@ -250,7 +252,7 @@
   }
   
   .order-summary-make-order:hover {
-    background-color: #fcf2f2;
+    background-color: #effcb6;
     transform: scale(1.01);
   }
   
