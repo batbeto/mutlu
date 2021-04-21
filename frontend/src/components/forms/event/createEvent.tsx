@@ -4,7 +4,7 @@ import Leaflet from "leaflet";
 import mapPin from "../../../assets/pin.svg";
 import mapGuitar from "../../../assets/guitar.svg";
 import './styles.css';
-import { Event } from '../../../services/types';
+import { Event } from '../../../services/typesEvent';
 import { FormEvent, useState, useEffect } from 'react';
 import { fetchLocalMapBox, fetchEvents, postEvents } from "../../../api";
 import AsyncSelect from "react-select/async";

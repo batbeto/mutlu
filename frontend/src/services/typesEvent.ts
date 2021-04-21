@@ -2,6 +2,7 @@ export enum OrderStatus{
     PENDING, CONCLUSED
 }
 
+
 export type Event = {
     id?: number;
     name: string;
@@ -14,14 +15,4 @@ export type Event = {
     description: string;
     imageUri: string;
     status: OrderStatus;
-}
-
-
-export type Order = {
-    id?: number;
-	moment: Date;
-    price: number;
-	qtd: number;
-	total: number;
-	status: OrderStatus;
 }

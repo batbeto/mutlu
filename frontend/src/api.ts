@@ -1,5 +1,6 @@
 import axios from "axios";
-import { Event, Order } from './services/types'
+import { Event } from './services/typesEvent';
+import { Order } from './services/typesOrder';
 
 
 const local = 'http://localhost:8080';

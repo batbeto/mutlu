@@ -3,7 +3,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import Leaflet from "leaflet";
 import mapGuitar from "../../assets/guitar.svg";
 import './styles.css';
-import { Event } from '../../services/types';
+import { Event } from '../../services/typesEvent';
 import { useState, useEffect } from 'react';
 import { fetchLocalMapBox, fetchEvents } from "../../api";
 import AsyncSelect from "react-select/async";

@@ -1,6 +1,6 @@
 import './styles.css';
 import EventsCard from './EventsCard';
-import { Event } from '../../services/types';
+import { Event } from '../../services/typesEvent';
 import { CheckisSelected } from '../../util/util';
 
 type Props = {

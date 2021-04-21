@@ -1,4 +1,4 @@
-import { Event } from '../services/types';
+import { Event } from '../services/typesEvent';
 
 export function CheckisSelected(selectedEvent: Event[], event: Event){
     return selectedEvent.some(item => item.id === event.id);

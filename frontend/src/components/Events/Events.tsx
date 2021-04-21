@@ -2,7 +2,7 @@ import Steps from './Steps';
 import EventsList from './EventsList';
 import './styles.css';
 import { useEffect, useState } from 'react';
-import { Event } from '../../services/types'
+import { Event } from '../../services/typesEvent'
 import { fetchEvents } from '../../api';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { CheckisSelected } from '../../util/util';
