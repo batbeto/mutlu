@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 type Props = {
     amount: number;
     totalPrice: number;
+    onSubmit: () => void;
 }
-function Steps({amount, totalPrice}: Props){
+function Steps({amount, totalPrice, onSubmit}: Props){      
       return (
         <div className="order-summary-container">
             <div className="order-summary-content">
@@ -20,7 +21,11 @@ function Steps({amount, totalPrice}: Props){
                     </span>
                 </div>
                 <Link to={'/checkout'}>
-                    <button className="order-summary-make-order">FINALIZAR COMPRA</button>
+                    <button
+                        onClick={onSubmit} 
+                        className="order-summary-make-order">   
+                        FINALIZAR COMPRA
+                    </button>
                 </Link>                
             </div>
         </div>

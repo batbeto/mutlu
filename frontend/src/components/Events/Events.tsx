@@ -3,12 +3,14 @@ import EventsList from './EventsList';
 import './styles.css';
 import { useEffect, useState } from 'react';
 import { Event } from '../../services/typesEvent'
-import { fetchEvents } from '../../api';
+import { fetchEvents, postOrders } from '../../api';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { CheckisSelected } from '../../util/util';
+import { OrderPayload } from '../../services/typesOrder';
 
 
 export default function Events(){
+    const [orders, setOrders] = useState<OrderPayload>();
     const [events, setEvents] = useState<Event[]>([]);
     const [selectedEvent, setSelectedEvent] = useState<Event[]>([]);
     const totalPrice = selectedEvent.reduce((sum, item) => { return sum + item.price}, 0);
@@ -34,12 +36,31 @@ export default function Events(){
         }
     }
 
+    
+    const handleSubmit = () => {
+        const eventIds = selectedEvent.map(({ id }) => ({ id }));
+        const payload = {
+          ...orders!,
+          event: eventIds
+        }
+      
+        postOrders(payload).then(() => {
+          toast.error('Pedido enviado com sucesso!');
+          setSelectedEvent([]);
+        })
+          .catch(() => {
+            toast.warning('Erro ao enviar pedido');
+          })
+      }
          
 
     return (
         <>
             <div className="orders-container">
-                <Steps amount={selectedEvent.length} totalPrice={totalPrice} />
+                <Steps 
+                    amount={selectedEvent.length} 
+                    totalPrice={totalPrice}
+                    onSubmit={handleSubmit} />
                 <EventsList 
                     events={events}
                     onSelectEvent={handleSelectEvent}
