@@ -7,6 +7,7 @@ import { fetchEvents, postOrders } from '../../api';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { CheckisSelected } from '../../util/util';
 import { OrderPayload } from '../../services/typesOrder';
+import { toast } from 'react-toastify';
 
 
 export default function Events(){
