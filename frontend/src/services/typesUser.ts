@@ -17,6 +17,5 @@ type EventId = {
 }
 
 export type UserPayload = {
-    user: User;
     event: EventId[];
-}
+} & User;

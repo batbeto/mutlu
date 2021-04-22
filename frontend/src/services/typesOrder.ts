@@ -16,6 +16,5 @@ type EventId ={
 }
 
 export type OrderPayload = {
-    order: Order;
     events: EventId[];
-}
+} & Order;

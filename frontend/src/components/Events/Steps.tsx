@@ -1,4 +1,5 @@
 import { formatPrice } from '../../util/util';
+import { Link } from 'react-router-dom';
 
 type Props = {
     amount: number;
@@ -18,7 +19,9 @@ function Steps({amount, totalPrice}: Props){
                         VALOR TOTAL
                     </span>
                 </div>
-                <button className="order-summary-make-order">FINALIZAR COMPRA</button>
+                <Link to={'/checkout'}>
+                    <button className="order-summary-make-order">FINALIZAR COMPRA</button>
+                </Link>                
             </div>
         </div>
     )

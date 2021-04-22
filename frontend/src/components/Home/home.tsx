@@ -15,7 +15,7 @@ export default function Home(){
                             Procure o evento <br /> mais proximo de <br /> <strong className="voce">você</strong>!!!
                         </h1>
                         <h3 className="home-subtitle">
-                            Você precisa de uma conta Google ou Github.
+                            Venha se divertir conosco!!!
                         </h3> 
                     </div>
                     <div className="home-image">

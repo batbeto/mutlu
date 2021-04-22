@@ -6,7 +6,7 @@ import mapGuitar from "../../../assets/guitar.svg";
 import './styles.css';
 import { Event } from '../../../services/typesEvent';
 import { FormEvent, useState, useEffect } from 'react';
-import { fetchLocalMapBox, fetchEvents, postEvents } from "../../../api";
+import { fetchLocalMapBox, fetchEvents } from "../../../api";
 import AsyncSelect from "react-select/async";
 import TextField from '@material-ui/core/TextField';
 import CurrencyInput from 'react-currency-input-field';
@@ -96,7 +96,6 @@ function CreateEvent(){
                 status,
             }
         ])
-        postEvents(eventsEntities);
         setAddress({ position: initialPosition });
         setDescription('');
         setTickets(1);

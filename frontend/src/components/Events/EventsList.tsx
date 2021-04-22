@@ -14,7 +14,8 @@ function EventsList({ events, onSelectEvent, selectedEvent }: Props){
     return (
         <div className="orders-list-container"> 
             <div className="orders-list-items">
-                {events.map( events => (<EventsCard 
+                {events.map( events => (
+                <EventsCard 
                     key={events.id} 
                     event={events} 
                     onSelectEvent={onSelectEvent}
