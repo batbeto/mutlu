@@ -38,7 +38,7 @@ public class OrderService {
 		Order order = new Order(
 				null,
 				Instant.now(),
-				dto.getPrice(),
+				dto.getUser_id(),
 				dto.getQtd(),
 				dto.getTotal(),
 				OrderStatus.PENDING);
@@ -54,7 +54,6 @@ public class OrderService {
 	public OrderDTO updateOrder(Long id, OrderDTO newOrder) {
 		Order order = repository.getOne(id);
 		order.setMoment(newOrder.getMoment());
-		order.setPrice(newOrder.getPrice());
 		order.setQtd(newOrder.getQtd());
 		order.setTotal(newOrder.getTotal());
 		order = repository.save(order);

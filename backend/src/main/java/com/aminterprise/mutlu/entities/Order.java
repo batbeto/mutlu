@@ -24,7 +24,7 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Instant moment;
-	private Double price;
+	private Long user_id;
 	private Integer qtd;
 	private Double total;
 	private OrderStatus status;
@@ -38,15 +38,16 @@ public class Order implements Serializable {
 	public Order() {
 	}
 
-	public Order(Long id, Instant moment, Double price, Integer qtd, Double total, OrderStatus status) {
+	public Order(Long id, Instant moment, Long user_id, Integer qtd, Double total, OrderStatus status,
+			Set<Event> events) {
 		super();
 		this.id = id;
 		this.moment = moment;
-		this.price = price;
+		this.user_id = user_id;
 		this.qtd = qtd;
 		this.total = total;
 		this.status = status;
-		
+		this.events = events;
 	}
 
 	public Long getId() {
@@ -65,12 +66,12 @@ public class Order implements Serializable {
 		this.moment = moment;
 	}
 
-	public Double getPrice() {
-		return price;
+	public Long getUser_id() {
+		return user_id;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
 	}
 
 	public Integer getQtd() {
@@ -129,5 +130,5 @@ public class Order implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

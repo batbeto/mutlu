@@ -16,8 +16,8 @@ public class OrderDTO implements Serializable {
 	
 	private Long id;
 	private Instant moment;
-	private Double price;
 	private Integer qtd;
+	private Long user_id;
 	private Double total;
 	private OrderStatus status;
 	
@@ -26,13 +26,13 @@ public class OrderDTO implements Serializable {
 	public OrderDTO() {
 	}
 	
-	public OrderDTO(Long id, Instant moment, Double price, Integer qtd, Double total, OrderStatus status,
+	public OrderDTO(Long id, Instant moment, Integer qtd, Long user_id,Double total , OrderStatus status,
 			List<EventDTO> events) {
 		super();
 		this.id = id;
 		this.moment = moment;
-		this.price = price;
 		this.qtd = qtd;
+		this.user_id = user_id;
 		this.total = total;
 		this.status = status;
 		this.events = events;
@@ -41,9 +41,9 @@ public class OrderDTO implements Serializable {
 
 	public OrderDTO(Order entity) {
 		id = entity.getId();
-		price = entity.getPrice();
 		qtd = entity.getQtd();
 		total = entity.getTotal();
+		user_id = entity.getUser_id();
 		moment = entity.getMoment();
 		status = entity.getStatus();
 		events = entity.getEvents().stream().map(x -> new EventDTO(x)).collect(Collectors.toList());
@@ -65,20 +65,20 @@ public class OrderDTO implements Serializable {
 		this.moment = moment;
 	}
 
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
 	public Integer getQtd() {
 		return qtd;
 	}
 
 	public void setQtd(Integer qtd) {
 		this.qtd = qtd;
+	}
+
+	public Long getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
 	}
 
 	public Double getTotal() {
@@ -100,6 +100,5 @@ public class OrderDTO implements Serializable {
 	public List<EventDTO> getEvents() {
 		return events;
 	}
-
 	
 }

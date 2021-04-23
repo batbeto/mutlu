@@ -1,13 +1,14 @@
 import Steps from './Steps';
 import EventsList from './EventsList';
 import './styles.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Event } from '../../services/typesEvent'
 import { fetchEvents, postOrders } from '../../api';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { CheckisSelected } from '../../util/util';
 import { OrderPayload } from '../../services/typesOrder';
 import { toast } from 'react-toastify';
+
 
 
 export default function Events(){
@@ -46,7 +47,7 @@ export default function Events(){
         }
       
         postOrders(payload).then(() => {
-          toast.error('Pedido enviado com sucesso!');
+          toast.error('Redirecionando para metodo de pagamento!');
           setSelectedEvent([]);
         })
           .catch(() => {
