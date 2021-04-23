@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.aminterprise.mutlu.dto.EventDTO;
+
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
@@ -37,9 +39,9 @@ public class Order implements Serializable {
 	
 	public Order() {
 	}
+	
 
-	public Order(Long id, Instant moment, Long user_id, Integer qtd, Double total, OrderStatus status,
-			Set<Event> events) {
+	public Order(Long id, Instant moment, Long user_id, Integer qtd, Double total, OrderStatus status) {
 		super();
 		this.id = id;
 		this.moment = moment;
@@ -47,7 +49,7 @@ public class Order implements Serializable {
 		this.qtd = qtd;
 		this.total = total;
 		this.status = status;
-		this.events = events;
+		
 	}
 
 	public Long getId() {
@@ -100,10 +102,6 @@ public class Order implements Serializable {
 
 	public Set<Event> getEvents() {
 		return events;
-	}
-
-	public void setEvents(Set<Event> events) {
-		this.events = events;
 	}
 
 	@Override

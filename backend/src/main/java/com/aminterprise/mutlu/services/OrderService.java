@@ -55,6 +55,7 @@ public class OrderService {
 		Order order = repository.getOne(id);
 		order.setMoment(newOrder.getMoment());
 		order.setQtd(newOrder.getQtd());
+		order.setUser_id(newOrder.getUser_id());
 		order.setTotal(newOrder.getTotal());
 		order = repository.save(order);
 		return new OrderDTO(order);

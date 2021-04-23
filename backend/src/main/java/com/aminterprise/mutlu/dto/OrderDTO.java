@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.aminterprise.mutlu.entities.Event;
 import com.aminterprise.mutlu.entities.Order;
 import com.aminterprise.mutlu.entities.OrderStatus;
 
@@ -25,14 +26,14 @@ public class OrderDTO implements Serializable {
 	
 	public OrderDTO() {
 	}
-	
+
 	public OrderDTO(Long id, Instant moment, Integer qtd, Long user_id,Double total , OrderStatus status,
 			List<EventDTO> events) {
 		super();
 		this.id = id;
 		this.moment = moment;
-		this.qtd = qtd;
 		this.user_id = user_id;
+		this.qtd = qtd;
 		this.total = total;
 		this.status = status;
 		this.events = events;
