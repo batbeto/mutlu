@@ -1,4 +1,6 @@
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import t from 'prop-types';
 import { Redirect,Route, Switch } from "react-router-dom";
 import { useContext, useEffect ,lazy, Suspense, useState} from 'react';
@@ -10,6 +12,7 @@ const Home = lazy(() => import('./components/Home'));
 const Events = lazy(() => import('./components/Events'));
 const MapEvent = lazy(() => import('./components/forms/event'));
 const Maps = lazy(()=> import('./components/Maps'));
+
 
 function App({ location }:any) {
   const { userInfo, setUserInfo } = useContext(AuthContext)
@@ -41,6 +44,7 @@ function App({ location }:any) {
         <Route path='/maps' component={Maps} />
         <Route path='/' component={Home} exact />
       </Switch>
+      <ToastContainer />
     </Suspense>
     
   )

@@ -2,7 +2,7 @@ import { Event } from "../../services/typesEvent";
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import { formatPrice } from '../../util/util';
+import { formatPrice } from '../../helpers/helpers';
 
 
 const useStyles = makeStyles((theme: Theme) =>

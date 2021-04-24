@@ -1,5 +1,5 @@
-import { formatPrice } from '../../util/util';
-import { Link } from 'react-router-dom';
+import { formatPrice } from '../../helpers/helpers';
+
 
 type Props = {
     amount: number;
@@ -20,13 +20,12 @@ function Steps({amount, totalPrice, onSubmit}: Props){
                         VALOR TOTAL
                     </span>
                 </div>
-                <Link to={'/checkout'}>
-                    <button
-                        onClick={onSubmit} 
-                        className="order-summary-make-order">   
-                        FINALIZAR COMPRA
-                    </button>
-                </Link>                
+                
+                <button
+                    onClick={onSubmit} 
+                    className="order-summary-make-order">   
+                    FINALIZAR COMPRA
+                </button>            
             </div>
         </div>
     )

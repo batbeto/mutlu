@@ -6,11 +6,12 @@ import mapGuitar from "../../../assets/guitar.svg";
 import './styles.css';
 import { Event } from '../../../services/typesEvent';
 import { FormEvent, useState, useEffect } from 'react';
-import { fetchLocalMapBox, fetchEvents } from "../../../api";
+import { fetchLocalMapBox, fetchEvents, postEvents } from "../../../api";
 import AsyncSelect from "react-select/async";
 import TextField from '@material-ui/core/TextField';
 import CurrencyInput from 'react-currency-input-field';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
+import { toast } from "react-toastify";
 
 const initialPosition = { lat: -22.2154042, lng: -44.8331331 };
 
@@ -38,7 +39,7 @@ const mapGuitarIcon = Leaflet.icon({
 
 function CreateEvent(){
     const [eventsEntities, setEventsEntities] = useState<Event[]>([]);
-
+    const [events, setEvents] = useState<Event>();
     const [address, setAddress] = useState<Place>({
         position: initialPosition
     })
@@ -79,11 +80,12 @@ function CreateEvent(){
       };
     
     async function handleSubmit(event: FormEvent) {
-        event.preventDefault()
+        event.preventDefault();
+        console.log(event);
         if(!address || !name) return;
 
-        setEventsEntities([
-            ...eventsEntities,{
+        const saveEvents = {
+            ...events,
                 name,
                 address: address?.value || "",
                 date,
@@ -94,15 +96,25 @@ function CreateEvent(){
                 tickets,
                 imageUri,
                 status,
-            }
-        ])
-        setAddress({ position: initialPosition });
-        setDescription('');
-        setTickets(1);
-        setPrice(0);
-        setImageUri('');
-        setDate(new Date());
-        setStatus(0);
+        }
+        console.log(saveEvents)
+        
+        postEvents(saveEvents)
+            .then(() => {
+                console.log(saveEvents);
+                toast.error('Evento cadastrado!');
+                setAddress({ position: initialPosition });
+                setDescription('');
+                setTickets(1);
+                setPrice(0);
+                setImageUri('');
+                setDate(new Date());
+                setStatus(0);
+            })
+            .catch(() => {
+                toast.warning('Erro ao cadastrar evento!');
+            })
+        
     }
     
     function handleChangeTickets(e: any) {
