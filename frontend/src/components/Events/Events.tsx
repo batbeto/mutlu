@@ -51,7 +51,7 @@ export default function Events(){
       
         postOrders(payload)
           .then(() => {
-            console.log(payload)
+            
             toast.error('Compra realizada!');
             setSelectedEvent([]);
         })

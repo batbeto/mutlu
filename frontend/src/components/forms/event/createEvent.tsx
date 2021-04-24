@@ -81,7 +81,7 @@ function CreateEvent(){
     
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-        console.log(event);
+        
         if(!address || !name) return;
 
         const saveEvents = {
@@ -97,8 +97,8 @@ function CreateEvent(){
                 imageUri,
                 status,
         }
-        console.log(saveEvents)
         
+
         postEvents(saveEvents)
             .then(() => {
                 console.log(saveEvents);
