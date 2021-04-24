@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.aminterprise.mutlu.dto.UserDTO;
+import com.aminterprise.mutlu.entities.User;
 import com.aminterprise.mutlu.repositories.UserRepository;
 import com.aminterprise.mutlu.services.UserService;
 
@@ -37,6 +38,13 @@ public class UserController {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@GetMapping(path={"/{id}"})
+	public ResponseEntity<User> findById(@PathVariable long id){
+	   return repository.findById(id)
+	           .map(record -> ResponseEntity.ok().body(record))
+	           .orElse(ResponseEntity.notFound().build());
+	}
+	
 	@PostMapping
 	public ResponseEntity<UserDTO> insert(@RequestBody UserDTO dto){
 		dto = service.insert(dto);
@@ -45,7 +53,7 @@ public class UserController {
 		return ResponseEntity.created(uri).body(dto);
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO newUser){
 		newUser = service.updateUser(id, newUser);
 		return ResponseEntity.ok().body(newUser);

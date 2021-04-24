@@ -8,9 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.aminterprise.mutlu.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
-	
-	@Query("SELECT DISTINCT obj FROM Order obj JOIN FETCH obj.events "
-			+ " WHERE obj.status = 0")
-	List<User> findUsersPending();
-
+		
+	@Query("SELECT obj FROM User obj " + " WHERE obj.status = 0 OR obj.status = 2")
+	List<User> findUsersActiveOrAdm();
 }

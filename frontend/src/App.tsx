@@ -12,7 +12,7 @@ const Home = lazy(() => import('./components/Home'));
 const Events = lazy(() => import('./components/Events'));
 const MapEvent = lazy(() => import('./components/forms/event'));
 const Maps = lazy(()=> import('./components/Maps'));
-
+const Users = lazy(() => import('./components/forms/user'));
 
 function App({ location }:any) {
   const { userInfo, setUserInfo } = useContext(AuthContext)
@@ -33,12 +33,13 @@ function App({ location }:any) {
 
   if (isUserLoggedIn && location.pathname === '/') return <Redirect to='/events'/>
 
-  if (!isUserLoggedIn && location.pathname !== '/') return <Redirect to='/'/>
+  if (!isUserLoggedIn && location.pathname !== '/register') return <Redirect to='/register' />
 
   return (
     <Suspense fallback={<LinearProgress />}>
       <Navbar />  
       <Switch>
+        <Route path='/users/add' component={Users} />
         <Route path='/create/events' component ={MapEvent} />
         <Route path='/events' component={Events}/>
         <Route path='/maps' component={Maps} />
