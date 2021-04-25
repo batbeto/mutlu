@@ -33,3 +33,4 @@ INSERT INTO tb_order_event (order_id, event_id) VALUES (6 , 1);
 INSERT INTO tb_order_event (order_id, event_id) VALUES (7 , 7);
 INSERT INTO tb_order_event (order_id, event_id) VALUES (7 , 5);
 
+INSERT INTO tb_user (cpf, email, name, pass, status) VALUES ('00011122233','btow.m@hotmail.com','Adalberto Silva','123456',2);

@@ -33,12 +33,17 @@ public class UserController {
 	private UserService service;
 	
 	@GetMapping
+	public ResponseEntity<List<UserDTO>> findUsers(){
+		List<UserDTO> list = service.findUsers();
+		return ResponseEntity.ok().body(list);
+	}
+	@GetMapping("/all")
 	public ResponseEntity<List<UserDTO>> findAll(){
 		List<UserDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@GetMapping(path={"/{id}"})
+	@GetMapping("/{id}")
 	public ResponseEntity<User> findById(@PathVariable long id){
 	   return repository.findById(id)
 	           .map(record -> ResponseEntity.ok().body(record))

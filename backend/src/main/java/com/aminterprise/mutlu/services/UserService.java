@@ -25,6 +25,12 @@ public class UserService {
 	
 	@Transactional(readOnly = true)
 	public List<UserDTO> findAll(){
+		List<User> list = repository.findAll();
+		return list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly = true)
+	public List<UserDTO> findUsers(){
 		List<User> list = repository.findUsersActiveOrAdm();
 		return list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
 	}
@@ -33,7 +39,7 @@ public class UserService {
 	public UserDTO insert(UserDTO dto) {
 		User user = new User(
 				null,
-				dto.getNome(),
+				dto.getName(),
 				dto.getEmail(),
 				dto.getCpf(),
 				dto.getPass(),
@@ -51,7 +57,7 @@ public class UserService {
 		User user = repository.getOne(id);
 		user.setCpf(newUser.getCpf());
 		user.setEmail(newUser.getEmail());
-		user.setNome(newUser.getNome());
+		user.setName(newUser.getName());
 		user.setPass(newUser.getPass());
 		user.setStatus(newUser.getStatus());
 		user = repository.save(user);

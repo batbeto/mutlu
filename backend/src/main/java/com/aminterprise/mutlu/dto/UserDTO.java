@@ -13,7 +13,7 @@ public class UserDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String nome;
+	private String name;
 	private String email;
 	private String cpf;
 	private String pass;
@@ -24,11 +24,11 @@ public class UserDTO implements Serializable{
 	public UserDTO() {
 	}
 
-	public UserDTO(Long id, String nome, String email, String cpf, String pass, UserStatus status,
+	public UserDTO(Long id, String name, String email, String cpf, String pass, UserStatus status,
 			List<EventDTO> events) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 		this.cpf = cpf;
 		this.pass = pass;
@@ -39,7 +39,7 @@ public class UserDTO implements Serializable{
 	public UserDTO(User entity) {
 		super();
 		id = entity.getId();
-		nome = entity.getNome();
+		name = entity.getName();
 		email = entity.getEmail();
 		cpf = entity.getCpf();
 		pass = entity.getPass();
@@ -55,12 +55,12 @@ public class UserDTO implements Serializable{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
