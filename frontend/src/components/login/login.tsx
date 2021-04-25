@@ -13,8 +13,8 @@ import Modal from '@material-ui/core/Modal';
 import './styles.css';
 import { useState, useContext } from 'react';
 import { AuthContext } from '../../services/auth';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
+import  Users  from "../forms/user";
 
 
 
@@ -22,6 +22,7 @@ import { Link } from 'react-router-dom'
 function Login() {
   const { logon_git, logon_google, logout, userInfo } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenReg, setIsOpenReg] = useState(false);
   const [anchor, setAnchor] = useState(null);
   
   const handleModalOpen = () =>{
@@ -91,10 +92,7 @@ function Login() {
                                 <input type="password" placeholder="Senha "/>
                                 <div className="box-btn-login" onClick={handleModalClose}>
                                   <input type="submit" value="ENTRAR"/>
-                                  <Link 
-                                    to="/users/add">
-                                    <input type="submit" value="REGISTRO" />
-                                  </Link> 
+                                  <input type="submit" value="REGISTRO" onClick={()=>setIsOpenReg(true)} />
                                 </div>
                                 Esqueceu <a href="/">email</a> ou a <a href="/">senha</a>? 
                             </form>
@@ -127,7 +125,7 @@ function Login() {
                         </div>
                     </div>
             </Modal>
-        
+            {isOpenReg ? <Modal open={isOpenReg} onClose={()=>setIsOpenReg(false)} closeAfterTransition><Users /></Modal> : null}
       </div>
     )
 }
