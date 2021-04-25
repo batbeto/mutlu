@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.aminterprise.mutlu.entities.Event;
 import com.aminterprise.mutlu.entities.Order;
 import com.aminterprise.mutlu.entities.OrderStatus;
 

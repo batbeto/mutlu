@@ -15,6 +15,10 @@ function Auth({ children }:any){
         isUserLoggedIn: false,
         user: null
       })
+
+    const logon_email = async (e: any) => {
+        e.preventDefault()
+    };
           
     const logon_git = useCallback(() => {
         const providerGit = new firebase.auth.GithubAuthProvider();

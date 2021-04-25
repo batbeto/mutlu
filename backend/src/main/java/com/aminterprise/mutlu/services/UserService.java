@@ -36,6 +36,12 @@ public class UserService {
 	}
 	
 	@Transactional
+	public User loginUser(String email) {
+		User user = repository.findByEmail(email);
+		return user;
+	}
+	
+	@Transactional
 	public UserDTO insert(UserDTO dto) {
 		User user = new User(
 				null,

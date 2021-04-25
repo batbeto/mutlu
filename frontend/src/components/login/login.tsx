@@ -15,6 +15,8 @@ import { useState, useContext } from 'react';
 import { AuthContext } from '../../services/auth';
 import { Link } from 'react-router-dom';
 import  Users  from "../forms/user";
+import { toast } from 'react-toastify';
+import { postUsers } from '../../api';
 
 
 
@@ -24,7 +26,39 @@ function Login() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenReg, setIsOpenReg] = useState(false);
   const [anchor, setAnchor] = useState(null);
+  const [loginValues, setLoginValues] = useState({
+    email:'', pass:''
+  });
   
+  
+  const onChange = (e: any) => {
+    const {value, name} = e.target;
+
+    setLoginValues({
+      ...loginValues,
+      [name]: value,
+    });
+  }
+
+  const handleSignIn  = (e: any) => {
+    e.preventDefault();
+    const user = {
+      ...loginValues,
+      email: loginValues.email,
+      pass: loginValues.pass,
+    };
+
+    if (!user.email || !user.pass) {
+       return toast.warning('Preencha todos os campos!')
+    } else{
+      postUsers(user)
+        .then()
+        .catch()
+      
+    }
+    
+  }
+
   const handleModalOpen = () =>{
     setIsOpen(true)
   }
@@ -74,7 +108,9 @@ function Login() {
                 component={Link} to= "/create/events"
                 onClick={handleMenuClose}
                 >Criar Evento</MenuItem>
-              <MenuItem onClick={logout}>Sair</MenuItem>
+              <MenuItem 
+                onClick={() => {logout(); handleMenuClose();}}
+                >Sair</MenuItem>
           </Menu>       
           <Modal
                 className="modalLogin"
@@ -86,10 +122,20 @@ function Login() {
                         <div className="modal-body-login">
                         <Grid container spacing={3} direction="column" alignItems='center'>
                           <Grid item>
-                            <form className="box-login">
-                                <Logo width="30px" height="30px"/> <h1>LOGIN</h1>
-                                <input type="text" placeholder="Email "/>
-                                <input type="password" placeholder="Senha "/>
+                            <form className="box-login" onSubmit={handleSignIn}>
+                                <Logo width="35px" height="35px"/> <h1>LOGIN</h1>
+                                <input 
+                                  type="text" 
+                                  placeholder="Email " 
+                                  onChange={onChange} 
+                                  value={loginValues.email}
+                                  required />
+                                <input 
+                                  type="password" 
+                                  placeholder="Senha " 
+                                  onChange={onChange} 
+                                  value={loginValues.pass}
+                                  required />
                                 <div className="box-btn-login" onClick={handleModalClose}>
                                   <input type="submit" value="ENTRAR"/>
                                   <input type="submit" value="REGISTRO" onClick={()=>setIsOpenReg(true)} />

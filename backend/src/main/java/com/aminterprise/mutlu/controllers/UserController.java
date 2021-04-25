@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -37,6 +38,13 @@ public class UserController {
 		List<UserDTO> list = service.findUsers();
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@RequestMapping(value = "/{email:.+}", method = RequestMethod.GET)
+	public ResponseEntity<User> findByEmail(@PathVariable(name = "email", value = "email") String email){
+		User user = repository.findByEmail(email);
+		return ResponseEntity.ok().body(user);
+	}
+	
 	@GetMapping("/all")
 	public ResponseEntity<List<UserDTO>> findAll(){
 		List<UserDTO> list = service.findAll();

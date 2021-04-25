@@ -14,7 +14,7 @@ const MapEvent = lazy(() => import('./components/forms/event'));
 const Maps = lazy(()=> import('./components/Maps'));
 
 
-function App({ location }:any) {
+function App() {
   const { userInfo, setUserInfo } = useContext(AuthContext)
   const [ checkUserIn, setCheckUserIn ] =useState(false)
   const { isUserLoggedIn } = userInfo;
@@ -31,7 +31,7 @@ function App({ location }:any) {
   
   if (!checkUserIn) return <LinearProgress />
 
-  const PrivateRoute = ({component: Component, isUserLoggedIn ,...rest}: any) => (
+  const PrivateRoute = ({component: Component ,...rest}: any) => (
     <Route {...rest} render={props => (
       isUserLoggedIn ? (<Component {...props} />) : 
       (<Redirect to={{pathname: "/", state: {from: props.location} }}/>)
