@@ -12,7 +12,7 @@ const Home = lazy(() => import('./components/Home'));
 const Events = lazy(() => import('./components/Events'));
 const MapEvent = lazy(() => import('./components/forms/event'));
 const Maps = lazy(()=> import('./components/Maps'));
-const Users = lazy(() => import('./components/forms/user'));
+
 
 function App({ location }:any) {
   const { userInfo, setUserInfo } = useContext(AuthContext)
@@ -31,18 +31,21 @@ function App({ location }:any) {
   
   if (!checkUserIn) return <LinearProgress />
 
-  if (isUserLoggedIn && location.pathname === '/') return <Redirect to='/events'/>
-
-  if (!isUserLoggedIn && location.pathname !== '/') return <Redirect to='/' />
+  const PrivateRoute = ({component: Component, isUserLoggedIn ,...rest}: any) => (
+    <Route {...rest} render={props => (
+      isUserLoggedIn ? (<Component {...props} />) : 
+      (<Redirect to={{pathname: "/", state: {from: props.location} }}/>)
+    )}/>  
+  )  
+  
 
   return (
     <Suspense fallback={<LinearProgress />}>
       <Navbar />  
       <Switch>
-        <Route path='/users/add' component={Users} />
-        <Route path='/create/events' component ={MapEvent} />
-        <Route path='/events' component={Events}/>
-        <Route path='/maps' component={Maps} />
+        <PrivateRoute path='/create/events' component ={MapEvent} />
+        <PrivateRoute path='/events' component={Events}/>
+        <PrivateRoute path='/maps' component={Maps} />
         <Route path='/' component={Home} exact />
       </Switch>
       <ToastContainer />
