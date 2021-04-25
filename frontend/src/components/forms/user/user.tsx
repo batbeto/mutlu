@@ -1,3 +1,4 @@
+import "./styles.css";
 import { useEffect, useState } from "react";
 import { User } from "../../../services/typesUser";
 import * as yup from 'yup';
@@ -74,64 +75,66 @@ export default function Users(){
     }
 
     return (
-        <div className="reg-container">  
-            <h1 className="reg-title">Cadastrar Usuario</h1>
+        <div className="landing-page-form">  
             <form
                 onSubmit={handleSubmit} 
-                className="reg-form">
-                <div>
-                    <label htmlFor="name">Nome</label>
-                    <input
-                        id="name"
-                        placeholder="Digite seu nome"
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        placeholder="Digite seu email"
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="cpf">CPF</label>
-                    <input
-                        id="cpf"
-                        placeholder="Digite seu CPF"
-                        value={cpf}
-                        onChange={(event) => setCpf(event.target.value)}
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        placeholder="Digite sua senha"
-                        type="password"
-                        value={pass}
-                        onChange={(event) => setPass(event.target.value)}
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="c-password">Confirmar Password</label>
-                    <input
-                        id="c-password"
-                        placeholder="Digite sua senha"
-                        type="password"
-                        value={cPass}
-                        onChange={(event) => setCPass(event.target.value)}
-                        required={true}
-                    />
-                </div>
-                <button type='submit'>CONFIRMAR</button>
+                className="landing-page-form">
+                <fieldset>
+                    <legend>Usuarios</legend>
+                    <div className="input-block">
+                        <label htmlFor="name">Nome:</label>
+                        <input
+                            id="name"
+                            placeholder="Digite seu nome"
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                            required={true}
+                        />
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            id="email"
+                            placeholder="Digite seu email"
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
+                            required={true}
+                        />
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="cpf">CPF:</label>
+                        <input
+                            id="cpf"
+                            placeholder="Digite seu CPF"
+                            value={cpf}
+                            onChange={(event) => setCpf(event.target.value)}
+                            required={true}
+                        />
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            id="password"
+                            placeholder="Digite sua senha"
+                            type="password"
+                            value={pass}
+                            onChange={(event) => setPass(event.target.value)}
+                            required={true}
+                        />
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="c-password">Confirmar Password:</label>
+                        <input
+                            id="c-password"
+                            placeholder="Digite sua senha"
+                            type="password"
+                            value={cPass}
+                            onChange={(event) => setCPass(event.target.value)}
+                            required={true}
+                        />
+                    </div>
+                    <button className="confirm-button" type='submit'>CONFIRMAR</button>
+                </fieldset>
             </form>
         </div>
     );

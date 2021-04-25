@@ -89,9 +89,12 @@ function Login() {
                                 <Logo width="30px" height="30px"/> <h1>LOGIN</h1>
                                 <input type="text" placeholder="Email "/>
                                 <input type="password" placeholder="Senha "/>
-                                <div className="box-btn-login">
+                                <div className="box-btn-login" onClick={handleModalClose}>
                                   <input type="submit" value="ENTRAR"/>
-                                  <input type="submit" value="REGISTRO"/>
+                                  <Link 
+                                    to="/users/add">
+                                    <input type="submit" value="REGISTRO" />
+                                  </Link> 
                                 </div>
                                 Esqueceu <a href="/">email</a> ou a <a href="/">senha</a>? 
                             </form>

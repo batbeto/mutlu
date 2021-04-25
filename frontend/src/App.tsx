@@ -31,9 +31,9 @@ function App({ location }:any) {
   
   if (!checkUserIn) return <LinearProgress />
 
-  if (isUserLoggedIn && location.pathname === '/') return <Redirect to='/events'/>
+  //if (isUserLoggedIn && location.pathname === '/') return <Redirect to='/events'/>
 
-  if (!isUserLoggedIn && location.pathname !== '/register') return <Redirect to='/register' />
+  //if (!isUserLoggedIn && location.pathname !== '/') return <Redirect to='/users/add' />
 
   return (
     <Suspense fallback={<LinearProgress />}>
