@@ -10,7 +10,6 @@ import { fetchLocalMapBox, fetchEvents, postEvents } from "../../../api";
 import AsyncSelect from "react-select/async";
 import TextField from '@material-ui/core/TextField';
 import CurrencyInput from 'react-currency-input-field';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { toast } from "react-toastify";
 
 const initialPosition = { lat: -22.2154042, lng: -44.8331331 };
@@ -55,11 +54,9 @@ function CreateEvent(){
     useEffect( () => {
         fetchEvents()
             .then(response => setEventsEntities(response.data))
-            .catch(() =>
-                <span>
-                    <SnackbarContent message="Erro ao listar os eventos" action={'x'} />
-                </span>
-             )
+            .catch(() => {
+                toast.warning('Erro ao cadastrar evento!');
+            })
     },[]);
 
     const loadOptions = (inputValue: string, callback:(place: Place[]) => void): void => {
@@ -101,7 +98,6 @@ function CreateEvent(){
 
         postEvents(saveEvents)
             .then(() => {
-                console.log(saveEvents);
                 toast.error('Evento cadastrado!');
                 setAddress({ position: initialPosition });
                 setDescription('');

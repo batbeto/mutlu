@@ -4,7 +4,7 @@ export enum UserStatus{
 
 export type User = {
     id?: number;
-	nome: string;
+	name: string;
 	email: string;
 	cpf: string;
 	pass: string;
