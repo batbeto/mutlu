@@ -39,10 +39,10 @@ public class UserController {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@RequestMapping(value = "/{email:.+}", method = RequestMethod.GET)
-	public ResponseEntity<User> findByEmail(@PathVariable(name = "email", value = "email") String email){
-		User user = repository.findByEmail(email);
-		return ResponseEntity.ok().body(user);
+	@GetMapping("/email")
+	public ResponseEntity<User> findEmail(String email){
+		User list = service.loginUser(email);
+		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/all")
