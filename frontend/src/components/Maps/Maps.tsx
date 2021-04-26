@@ -7,7 +7,7 @@ import { Event } from '../../services/typesEvent';
 import { useState, useEffect } from 'react';
 import { fetchLocalMapBox, fetchEvents } from "../../api";
 import AsyncSelect from "react-select/async";
-import SnackbarContent from '@material-ui/core/SnackbarContent';
+import { toast } from "react-toastify";
 
 const initialPosition = { lat: -22.2154042, lng: -44.8331331 };
 
@@ -38,9 +38,7 @@ function CreateEvent(){
         fetchEvents()
             .then(response => setEventsEntities(response.data))
             .catch(() =>
-                <span>
-                    <SnackbarContent message="Erro ao listar os eventos" action={'x'} />
-                </span>
+                toast.warning('Falha ao carregar eventos!')
              )
     },[]);
         

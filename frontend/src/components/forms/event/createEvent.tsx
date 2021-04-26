@@ -38,7 +38,7 @@ const mapGuitarIcon = Leaflet.icon({
 
 function CreateEvent(){
     const [eventsEntities, setEventsEntities] = useState<Event[]>([]);
-    const [events, setEvents] = useState<Event>();
+    const [events] = useState<Event>();
     const [address, setAddress] = useState<Place>({
         position: initialPosition
     })
@@ -108,7 +108,7 @@ function CreateEvent(){
                 setStatus(0);
             })
             .catch(() => {
-                toast.warning('Erro ao cadastrar evento!');
+                console.log('Aguardando...')
             })
         
     }

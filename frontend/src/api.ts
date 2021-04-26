@@ -25,6 +25,7 @@ export const postOrders = (data: OrderPayload) => (axios.post(`${local}/orders`,
 
 //Users
 export const fetchUsers = () => (axios(`${local}/users`));
+export const loginUser = (user: {email: string, pass: string}) => (axios.post(`${local}/users/login`),user)
 export const postUsers = (data: User) => (axios.post(`${local}/users`, data))
 export const putUsers = (data: User) => (axios.put(`${local}/users/${data.id}`, data))
 

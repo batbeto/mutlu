@@ -16,10 +16,7 @@ import { AuthContext } from '../../services/auth';
 import { Link } from 'react-router-dom';
 import  Users  from "../forms/user";
 import { toast } from 'react-toastify';
-import { postUsers } from '../../api';
-
-
-
+import { loginUser } from '../../api';
 
 function Login() {
   const { logon_git, logon_google, logout, userInfo } = useContext(AuthContext);
@@ -39,7 +36,7 @@ function Login() {
       [name]: value,
     });
   }
-
+  
   const handleSignIn  = (e: any) => {
     e.preventDefault();
     const user = {
@@ -51,14 +48,11 @@ function Login() {
     if (!user.email || !user.pass) {
        return toast.warning('Preencha todos os campos!')
     } else{
-      postUsers(user)
-        .then()
-        .catch()
-      
+       loginUser(user)   
     }
     
   }
-
+  
   const handleModalOpen = () =>{
     setIsOpen(true)
   }
@@ -125,13 +119,15 @@ function Login() {
                             <form className="box-login" onSubmit={handleSignIn}>
                                 <Logo width="35px" height="35px"/> <h1>LOGIN</h1>
                                 <input 
-                                  type="text" 
+                                  type="email" 
+                                  name="email"
                                   placeholder="Email " 
                                   onChange={onChange} 
                                   value={loginValues.email}
                                   required />
                                 <input 
-                                  type="password" 
+                                  type="password"
+                                  name="password" 
                                   placeholder="Senha " 
                                   onChange={onChange} 
                                   value={loginValues.pass}
