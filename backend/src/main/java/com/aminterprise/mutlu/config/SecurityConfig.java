@@ -23,10 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private Environment env;
 	
-	@Bean
-	public static BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -40,11 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("email")
-			.password(passwordEncoder().encode("pass")).authorities("User");
-	}
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
