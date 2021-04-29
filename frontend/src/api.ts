@@ -4,7 +4,7 @@ import { OrderPayload } from './services/typesOrder';
 import { User } from "./services/typesUser";
 
 //Para uso em localHost basta trocar
-const local = 'http://localhost:8080';
+//const local = 'http://localhost:8080';
 
 
 const API_URL = process.env.REACT_APP_API_URL;
