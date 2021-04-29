@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-
+Author: Adalberto Maia da Silva
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
